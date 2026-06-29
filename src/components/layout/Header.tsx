@@ -1,6 +1,9 @@
 import { SearchBar } from '../controls/SearchBar'
 import { CategoryToggles } from '../controls/CategoryToggles'
-import type { NodeCategory } from '../../types'
+import { ViewModeToggle } from '../controls/ViewModeToggle'
+import type { MapViewMode, NodeCategory } from '../../types'
+import { formatPower } from '../../utils/metrics'
+import type { LivePowerSnapshot } from '../../types'
 
 interface HeaderProps {
   searchQuery: string
@@ -13,6 +16,9 @@ interface HeaderProps {
   visibleNodes: number
   showFilters: boolean
   onToggleFilters: () => void
+  viewMode: MapViewMode
+  onViewModeChange: (mode: MapViewMode) => void
+  fleetPower?: LivePowerSnapshot | null
 }
 
 export function Header({
@@ -26,6 +32,9 @@ export function Header({
   visibleNodes,
   showFilters,
   onToggleFilters,
+  viewMode,
+  onViewModeChange,
+  fleetPower,
 }: HeaderProps) {
   return (
     <header className="relative z-20 border-b border-[var(--border)] bg-[var(--surface)]/80 backdrop-blur-xl">
@@ -43,15 +52,21 @@ export function Header({
             </p>
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex flex-wrap items-center gap-3">
+            <ViewModeToggle mode={viewMode} onChange={onViewModeChange} />
             <div
               className="hidden items-center gap-2 rounded-xl border border-[var(--border)] bg-[var(--surface)]/50 px-3 py-2 sm:flex"
               role="status"
-              aria-label={`Showing ${visibleNodes} of ${totalNodes} regions`}
+              aria-label={`Showing ${visibleNodes} of ${totalNodes} regions${fleetPower ? `, fleet IT load ${formatPower(fleetPower.itLoadMW)}` : ''}`}
             >
               <span className="h-2 w-2 animate-pulse-soft rounded-full bg-[var(--accent)] motion-reduce:animate-none" aria-hidden />
               <span className="font-mono text-xs text-[var(--text-secondary)]">
                 {visibleNodes}/{totalNodes} live
+                {fleetPower && viewMode === 'energy' && (
+                  <span className="ml-2 text-[var(--accent)]">
+                    · {formatPower(fleetPower.itLoadMW)} IT
+                  </span>
+                )}
               </span>
             </div>
             <button

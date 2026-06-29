@@ -13,7 +13,8 @@ import { QuickJump } from './components/controls/QuickJump'
 import { BuilderCredit } from './components/layout/BuilderCredit'
 import { EnergyCommitmentsPanel } from './components/panels/EnergyCommitmentsPanel'
 import { EmptyState, LoadingState } from './components/ui/States'
-import type { SpatialNode } from './types'
+import type { MapViewMode, SpatialNode } from './types'
+import { useFleetLivePower } from './hooks/useLivePower'
 import { trackEvent } from './utils/analytics'
 import { announce } from './utils/a11y'
 import { fitWorldMap } from './utils/spatial'
@@ -28,6 +29,7 @@ function App() {
   const [hoveredId, setHoveredId] = useState<string | null>(null)
   const [showFilters, setShowFilters] = useState(false)
   const [loading, setLoading] = useState(true)
+  const [viewMode, setViewMode] = useState<MapViewMode>('standard')
 
   const {
     query,
@@ -37,6 +39,8 @@ function App() {
     toggleCategory,
     allCategories: _allCategories,
   } = useFilters(SPATIAL_NODES)
+
+  const fleetPower = useFleetLivePower(filteredNodes, viewMode === 'energy')
 
   const {
     viewport,
@@ -233,6 +237,9 @@ function App() {
         visibleNodes={filteredNodes.length}
         showFilters={showFilters}
         onToggleFilters={() => setShowFilters((v) => !v)}
+        viewMode={viewMode}
+        onViewModeChange={setViewMode}
+        fleetPower={fleetPower}
       />
 
       <div className="relative flex min-h-0 flex-1">
@@ -248,6 +255,7 @@ function App() {
               viewport={viewport}
               selectedId={selectedId}
               hoveredId={hoveredId}
+              viewMode={viewMode}
               onSelect={handleSelect}
               onHover={handleHover}
               onPointerDown={onPointerDown}
@@ -269,7 +277,7 @@ function App() {
             <div className="flex items-end justify-between gap-3">
               <div className="pointer-events-auto flex flex-col gap-2">
                 <div className="hidden md:block">
-                  <Legend />
+                  <Legend viewMode={viewMode} />
                 </div>
                 <BuilderCredit />
               </div>

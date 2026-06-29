@@ -2,6 +2,47 @@ export type NodeCategory = 'compute' | 'storage' | 'network' | 'ai' | 'edge'
 
 export type NodeStatus = 'operational' | 'expanding' | 'planned' | 'maintenance'
 
+export type MapViewMode = 'standard' | 'energy' | 'compute'
+
+export type EnergySourceType =
+  | 'renewable'
+  | 'nuclear'
+  | 'gas'
+  | 'geothermal'
+  | 'hydro'
+  | 'grid'
+  | 'fuel_cells'
+
+export interface EnergySourceShare {
+  type: EnergySourceType
+  sharePct: number
+  label: string
+}
+
+export interface EnergyPortfolio {
+  sources: EnergySourceShare[]
+  pue: number
+  gridRegion?: string
+}
+
+export interface ComputeProfile {
+  primaryWorkloads: string[]
+  dataTypes: string[]
+  accelerators: string[]
+  dominantWorkload: string
+}
+
+export interface LivePowerSnapshot {
+  timestamp: number
+  itLoadMW: number
+  facilityInputMW: number
+  utilizationPct: number
+  bySourceMW: Record<EnergySourceType, number>
+  trend: number[]
+  isLive: boolean
+  sourceLabel: string
+}
+
 export interface NodeLocation {
   city: string
   stateOrRegion?: string

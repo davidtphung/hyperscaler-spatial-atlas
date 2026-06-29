@@ -1,15 +1,17 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
-import type { SpatialNode, ViewportState } from '../../types'
+import type { MapViewMode, SpatialNode, ViewportState } from '../../types'
 import { NodeMarker } from './NodeMarker'
 import { WorldMap } from './WorldMap'
 import { announce } from '../../utils/a11y'
 import { getNodeMapPosition, MAP_HEIGHT, MAP_WIDTH } from '../../utils/geo'
+import { useNodesLivePower } from '../../hooks/useLivePower'
 
 interface SpatialCanvasProps {
   nodes: SpatialNode[]
   viewport: ViewportState
   selectedId: string | null
   hoveredId: string | null
+  viewMode: MapViewMode
   onSelect: (node: SpatialNode) => void
   onHover: (node: SpatialNode | null) => void
   onPointerDown: (e: React.PointerEvent) => void
@@ -25,6 +27,7 @@ export function SpatialCanvas({
   viewport,
   selectedId,
   hoveredId,
+  viewMode,
   onSelect,
   onHover,
   onPointerDown,
@@ -36,6 +39,7 @@ export function SpatialCanvas({
 }: SpatialCanvasProps) {
   const containerRef = useRef<HTMLDivElement>(null)
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 })
+  const liveByNode = useNodesLivePower(nodes, viewMode === 'energy')
 
   useEffect(() => {
     const el = containerRef.current
@@ -112,6 +116,8 @@ export function SpatialCanvas({
             const isDimmed =
               hoveredId != null && !isHovered && !isSelected && selectedId != null
 
+            const liveMW = liveByNode[node.id]?.itLoadMW
+
             return (
               <NodeMarker
                 key={node.id}
@@ -121,6 +127,8 @@ export function SpatialCanvas({
                 isSelected={isSelected}
                 isHovered={isHovered}
                 isDimmed={!!isDimmed}
+                viewMode={viewMode}
+                liveMW={viewMode === 'energy' ? liveMW : undefined}
                 onSelect={handleSelect}
                 onHover={onHover}
                 reducedMotion={reducedMotion}

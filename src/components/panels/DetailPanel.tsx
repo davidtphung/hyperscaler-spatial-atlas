@@ -7,8 +7,12 @@ import { CloseIcon, ArrowIcon, ShareIcon } from '../icons'
 import { IconButton } from '../ui/IconButton'
 import { InfrastructureCharts } from './InfrastructureCharts'
 import { FleetComparisonChart } from './FleetComparisonChart'
+import { ComputeDataMap } from './ComputeDataMap'
+import { EnergyPortfolioChart } from './EnergyPortfolioChart'
+import { LivePowerMonitor } from './LivePowerMonitor'
 import { formatCoordinates, formatLocationAddress } from '../../utils/metrics'
 import { ProviderCommitments } from './ProviderCommitments'
+import { useLivePower } from '../../hooks/useLivePower'
 
 interface DetailPanelProps {
   node: SpatialNode | null
@@ -28,6 +32,7 @@ export function DetailPanel({
   className,
 }: DetailPanelProps) {
   const panelRef = useRef<HTMLElement>(null)
+  const livePower = useLivePower(node)
 
   useEffect(() => {
     if (node && panelRef.current) {
@@ -140,6 +145,9 @@ export function DetailPanel({
           </dl>
         </section>
 
+        <LivePowerMonitor snapshot={livePower} capacityMW={node.infrastructure.powerMW} />
+        <EnergyPortfolioChart node={node} live={livePower} />
+        <ComputeDataMap node={node} />
         <ProviderCommitments provider={node.provider} />
         <InfrastructureCharts node={node} />
         <FleetComparisonChart node={node} />
