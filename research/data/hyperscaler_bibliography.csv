@@ -1,0 +1,16 @@
+id,title,url,type,accessed
+SEC-MSFT,Microsoft Corp SEC XBRL Company Facts,https://data.sec.gov/api/xbrl/companyfacts/CIK0000789019.json,sec_filing,2026-06-28
+SEC-AMZN,Amazon.com Inc SEC XBRL Company Facts,https://data.sec.gov/api/xbrl/companyfacts/CIK0001018724.json,sec_filing,2026-06-28
+SEC-GOOGL,Alphabet Inc SEC XBRL Company Facts,https://data.sec.gov/api/xbrl/companyfacts/CIK0001652044.json,sec_filing,2026-06-28
+SEC-META,Meta Platforms SEC XBRL Company Facts,https://data.sec.gov/api/xbrl/companyfacts/CIK0001326801.json,sec_filing,2026-06-28
+SEC-ORCL,Oracle Corp SEC XBRL Company Facts,https://data.sec.gov/api/xbrl/companyfacts/CIK0001341439.json,sec_filing,2026-06-28
+SEC-AAPL,Apple Inc SEC XBRL Company Facts,https://data.sec.gov/api/xbrl/companyfacts/CIK0000320193.json,sec_filing,2026-06-28
+IEA-2025,IEA Energy and AI Report,https://www.iea.org/reports/energy-and-ai,agency_report,2026-06-28
+LBNL-2024,United States Data Centers Energy Usage (LBNL),https://eta.lbl.gov/publications/united-states-data-centers-energy,government_lab,2026-06-28
+AWS-INFRA,AWS Global Infrastructure,https://aws.amazon.com/about-aws/global-infrastructure/,company_website,2026-06-28
+MSFT-FY24Q4,Microsoft FY24 Q4 Earnings Release,https://www.microsoft.com/en-us/investor/earnings/FY-2024-Q4/press-release-webcast,earnings_release,2026-06-28
+VISTRA-META,Vistra and Meta Nuclear PPAs,https://investor.vistracorp.com/2026-01-09-Vistra-and-Meta-Announce-Agreements-to-Support-Nuclear-Plants-in-PJM-and-Add-New-Nuclear-Generation-to-the-Grid,press_release,2026-06-28
+TALEN-AWS,Talen Energy Amazon Nuclear Expansion,https://ir.talenenergy.com/news-releases/news-release-details/talen-energy-expands-nuclear-energy-relationship-amazon,press_release,2026-06-28
+WNN-TMI,Constellation Three Mile Island restart for Microsoft,https://www.world-nuclear-news.org/articles/constellation-to-restart-three-mile-island-unit-powering-microsoft,industry_news,2026-06-28
+OPENAI-STARGATE,Announcing the Stargate Project,https://openai.com/index/announcing-the-stargate-project/,press_release,2026-06-28
+META-NUCLEAR-RFP,Meta Nuclear Energy Projects,https://about.fb.com/news/2026/01/meta-nuclear-energy-projects-power-american-ai-leadership/,press_release,2026-06-28

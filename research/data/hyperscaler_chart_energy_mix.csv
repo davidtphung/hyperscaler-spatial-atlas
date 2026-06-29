@@ -1,0 +1,6 @@
+company,year,renewables_pct,nuclear_pct,grid_mix_pct,gas_bridge_pct,storage_flex_pct,source,confidence
+Microsoft,2024,45,8,40,5,2,Estimated from disclosed PPAs,estimated
+Amazon,2024,50,5,38,5,2,Estimated from Climate Pledge + nuclear deals,estimated
+Google,2024,55,6,32,4,3,Estimated from 24/7 carbon-free energy goal,estimated
+Meta,2026,40,18,35,4,3,Estimated post-Vistra PPAs,estimated
+Oracle,2026,30,5,55,8,2,Estimated; Stargate gas-heavy regions,estimated

@@ -1,0 +1,59 @@
+company,date,era,event_or_metric,category,value,unit,geography,source_url,source_type,confidence
+Amazon,1994-07-05,pre_ai_boom,Amazon.com founded,corporate_founding,,,USA,https://www.aboutamazon.com/what-we-do/company-facts,company_website,direct
+Amazon/AWS,2006-03-14,pre_ai_boom,Amazon Web Services (S3/EC2) launched,cloud_infrastructure_buildout,,,Global,https://aws.amazon.com/about-aws/,company_blog,direct
+Amazon/AWS,2011-00-00,pre_ai_boom,Global region expansion accelerates,data_center_expansion,,,Global,https://aws.amazon.com/about-aws/global-infrastructure/,company_website,direct
+Amazon,2019-09-19,pre_ai_boom,Climate Pledge co-founded; net-zero 2040 target,power_energy_commitments,2040,net_zero_target_year,Global,https://www.theclimatepledge.com/,company_commitment,direct
+Amazon,2020-12-31,pre_ai_boom,Property & equipment additions (cash flow),capex_trend,57.98,USD_billion,Global,https://data.sec.gov/api/xbrl/companyfacts/CIK0001018724.json,sec_filing_10k,direct
+Amazon,2021-12-31,pre_ai_boom,Property & equipment additions (cash flow),capex_trend,72.33,USD_billion,Global,https://data.sec.gov/api/xbrl/companyfacts/CIK0001018724.json,sec_filing_10k,direct
+Amazon,2022-12-31,pre_ai_boom,Property & equipment additions (cash flow),capex_trend,60.84,USD_billion,Global,https://data.sec.gov/api/xbrl/companyfacts/CIK0001018724.json,sec_filing_10k,direct
+Amazon/AWS,2023-00-00,ai_boom,Custom AI chips Trainium/Inferentia scale for ML workloads,ai_ml_infrastructure,,,Global,https://aws.amazon.com/ai/machine-learning/trainium/,company_website,direct
+Amazon,2023-09-25,ai_boom,Amazon invests up to $4B in Anthropic,ai_ml_infrastructure,4,USD_billion,USA,https://www.aboutamazon.com/news/company-news/amazon-anthropic-ai-investment,press_release,direct
+Amazon,2024-00-00,ai_boom,Reported annual capex surge tied to AWS/AI infrastructure,capex_trend,83,USD_billion,Global,https://ir.aboutamazon.com/news-release/news-release-details/2025/Amazon-com-Announces-Fourth-Quarter-Results/,earnings_release,direct
+Amazon/AWS,2025-00-00,current,"AWS global infrastructure: 39 regions, 123 AZs (announced plans for more)",data_center_expansion,39,regions,Global,https://aws.amazon.com/about-aws/global-infrastructure/,company_website,direct
+Amazon/AWS,2024-03-04,ai_boom,Talen Energy expands nuclear PPA with Amazon at Susquehanna,nuclear_renewables_ppa,960,MW,Pennsylvania USA,https://ir.talenenergy.com/news-releases/news-release-details/talen-energy-expands-nuclear-energy-relationship-amazon,press_release,direct
+Amazon,2025-00-00,ai_boom,Signatory to pledge supporting tripling global nuclear capacity (CERAWeek),public_policy_regulatory,,,Global,https://www.esgdive.com/news/amazon-google-meta-join-pledge-to-triple-global-nuclear-capacity-ceraweek/742470/,industry_news,direct
+Microsoft,1975-04-04,pre_ai_boom,Microsoft founded,corporate_founding,,,USA,https://www.microsoft.com/en-us/about,company_website,direct
+Microsoft/Azure,2010-02-01,pre_ai_boom,Microsoft Azure general availability,cloud_infrastructure_buildout,,,Global,https://azure.microsoft.com/,company_website,direct
+Microsoft,2019-07-22,pre_ai_boom,OpenAI partnership; $1B investment announced,ai_ml_infrastructure,1,USD_billion,USA,https://blogs.microsoft.com/blog/2019/07/22/openai-forms-exclusive-computing-partnership-with-microsoft-to-build-new-azure-ai-supercomputing-technologies/,company_blog,direct
+Microsoft,2020-01-16,pre_ai_boom,Carbon negative by 2030 commitment,power_energy_commitments,2030,carbon_negative_target_year,Global,https://blogs.microsoft.com/blog/2020/01/16/microsoft-will-be-carbon-negative-by-2030/,company_blog,direct
+Microsoft,2021-06-30,pre_ai_boom,Payments to acquire PP&E (annual capex),capex_trend,20.62,USD_billion,Global,https://data.sec.gov/api/xbrl/companyfacts/CIK0000789019.json,sec_filing_10k,direct
+Microsoft,2022-06-30,pre_ai_boom,Payments to acquire PP&E (annual capex),capex_trend,23.89,USD_billion,Global,https://data.sec.gov/api/xbrl/companyfacts/CIK0000789019.json,sec_filing_10k,direct
+Microsoft,2023-06-30,ai_boom,Payments to acquire PP&E (annual capex),capex_trend,28.11,USD_billion,Global,https://data.sec.gov/api/xbrl/companyfacts/CIK0000789019.json,sec_filing_10k,direct
+Microsoft,2023-02-07,ai_boom,Bing/Copilot AI integration announced (post-ChatGPT),ai_ml_infrastructure,,,Global,https://blogs.microsoft.com/blog/2023/02/07/reinventing-search-with-a-new-ai-powered-microsoft-bing-and-edge-your-copilot-for-the-web/,company_blog,direct
+Microsoft,2024-06-30,ai_boom,Payments to acquire PP&E (annual capex),capex_trend,44.48,USD_billion,Global,https://data.sec.gov/api/xbrl/companyfacts/CIK0000789019.json,sec_filing_10k,direct
+Microsoft,2024-09-20,ai_boom,Constellation Energy PPA to restart Three Mile Island Unit 1 for Microsoft,nuclear_renewables_ppa,835,MW,Pennsylvania USA,https://www.world-nuclear-news.org/articles/constellation-to-restart-three-mile-island-unit-powering-microsoft,industry_news,direct
+Microsoft,2025-06-30,current,Payments to acquire PP&E (annual capex),capex_trend,64.55,USD_billion,Global,https://data.sec.gov/api/xbrl/companyfacts/CIK0000789019.json,sec_filing_10k,direct
+Microsoft,2024-06-30,ai_boom,Azure & other cloud services revenue growth,cloud_infrastructure_buildout,29,percent_yoy,Global,https://www.microsoft.com/en-us/investor/earnings/FY-2024-Q4/press-release-webcast,earnings_release,direct
+Alphabet/Google,1998-09-04,pre_ai_boom,Google founded,corporate_founding,,,USA,https://about.google/,company_website,direct
+Google Cloud,2008-04-00,pre_ai_boom,Google App Engine launched (cloud platform origin),cloud_infrastructure_buildout,,,Global,https://cloud.google.com/,company_website,direct
+Google,2016-05-18,pre_ai_boom,TPU (Tensor Processing Unit) announced at Google I/O,ai_ml_infrastructure,,,Global,https://cloud.google.com/tpu,company_website,direct
+Alphabet,2021-12-31,pre_ai_boom,Payments to acquire PP&E (annual capex),capex_trend,24.64,USD_billion,Global,https://data.sec.gov/api/xbrl/companyfacts/CIK0001652044.json,sec_filing_10k,direct
+Alphabet,2022-12-31,pre_ai_boom,Payments to acquire PP&E (annual capex),capex_trend,31.48,USD_billion,Global,https://data.sec.gov/api/xbrl/companyfacts/CIK0001652044.json,sec_filing_10k,direct
+Alphabet,2023-12-31,ai_boom,Payments to acquire PP&E (annual capex),capex_trend,32.25,USD_billion,Global,https://data.sec.gov/api/xbrl/companyfacts/CIK0001652044.json,sec_filing_10k,direct
+Alphabet,2023-12-06,ai_boom,Gemini multimodal AI model announced,ai_ml_infrastructure,,,Global,https://blog.google/technology/ai/google-gemini-ai/,company_blog,direct
+Alphabet,2024-12-31,ai_boom,Payments to acquire PP&E (annual capex),capex_trend,52.53,USD_billion,Global,https://data.sec.gov/api/xbrl/companyfacts/CIK0001652044.json,sec_filing_10k,direct
+Alphabet,2025-12-31,current,Payments to acquire PP&E (annual capex),capex_trend,91.45,USD_billion,Global,https://data.sec.gov/api/xbrl/companyfacts/CIK0001652044.json,sec_filing_10k,direct
+Google,2024-00-00,ai_boom,Kairos Power SMR agreement for nuclear-powered data centers,nuclear_renewables_ppa,,,USA,https://blog.google/inside-google/infrastructure/,company_blog,direct
+Meta,2004-02-04,pre_ai_boom,Facebook founded,corporate_founding,,,USA,https://www.meta.com/about/company-info/,company_website,direct
+Meta,2011-04-00,pre_ai_boom,Open Compute Project launched,data_center_expansion,,,Global,https://www.opencompute.org/,industry_initiative,direct
+Meta,2021-12-31,pre_ai_boom,Payments to acquire PP&E (annual capex),capex_trend,18.69,USD_billion,Global,https://data.sec.gov/api/xbrl/companyfacts/CIK0001326801.json,sec_filing_10k,direct
+Meta,2022-12-31,pre_ai_boom,Payments to acquire PP&E (annual capex) — metaverse peak,capex_trend,31.43,USD_billion,Global,https://data.sec.gov/api/xbrl/companyfacts/CIK0001326801.json,sec_filing_10k,direct
+Meta,2023-12-31,ai_boom,Payments to acquire PP&E (annual capex),capex_trend,27.05,USD_billion,Global,https://data.sec.gov/api/xbrl/companyfacts/CIK0001326801.json,sec_filing_10k,direct
+Meta,2024-12-31,ai_boom,Payments to acquire PP&E (annual capex),capex_trend,37.26,USD_billion,Global,https://data.sec.gov/api/xbrl/companyfacts/CIK0001326801.json,sec_filing_10k,direct
+Meta,2025-12-31,current,Payments to acquire PP&E (annual capex),capex_trend,69.69,USD_billion,Global,https://data.sec.gov/api/xbrl/companyfacts/CIK0001326801.json,sec_filing_10k,direct
+Meta,2026-01-09,current,"20-year nuclear PPAs with Vistra (Perry, Davis-Besse, Beaver Valley)",nuclear_renewables_ppa,2609,MW,Ohio/Pennsylvania USA,https://investor.vistracorp.com/2026-01-09-Vistra-and-Meta-Announce-Agreements-to-Support-Nuclear-Plants-in-PJM-and-Add-New-Nuclear-Generation-to-the-Grid,press_release,direct
+Meta,2026-01-00,current,Nuclear energy RFP for 1–4 GW US capacity,nuclear_renewables_ppa,1000-4000,MW,USA,https://about.fb.com/news/2026/01/meta-nuclear-energy-projects-power-american-ai-leadership/,press_release,direct
+Oracle,1977-06-16,pre_ai_boom,Oracle founded,corporate_founding,,,USA,https://www.oracle.com/corporate/,company_website,direct
+Oracle Cloud,2016-00-00,pre_ai_boom,Oracle Cloud Infrastructure (Gen 2) expansion,cloud_infrastructure_buildout,,,Global,https://www.oracle.com/cloud/,company_website,direct
+Oracle,2023-05-31,ai_boom,Payments to acquire PP&E (annual capex),capex_trend,8.70,USD_billion,Global,https://data.sec.gov/api/xbrl/companyfacts/CIK0001341439.json,sec_filing_10k,direct
+Oracle,2025-01-21,ai_boom,"Stargate AI infrastructure initiative announced with OpenAI, SoftBank",ai_ml_infrastructure,500,USD_billion_program,USA,https://openai.com/index/announcing-the-stargate-project/,press_release,direct
+Oracle,2025-05-31,current,Payments to acquire PP&E (annual capex),capex_trend,21.21,USD_billion,Global,https://data.sec.gov/api/xbrl/companyfacts/CIK0001341439.json,sec_filing_10k,direct
+Oracle,2026-05-31,current,Payments to acquire PP&E (annual capex),capex_trend,55.66,USD_billion,Global,https://data.sec.gov/api/xbrl/companyfacts/CIK0001341439.json,sec_filing_10k,direct
+Apple,1976-04-01,pre_ai_boom,Apple founded,corporate_founding,,,USA,https://www.apple.com/,company_website,direct
+Apple,2021-09-25,pre_ai_boom,Payments to acquire PP&E (annual capex),capex_trend,11.09,USD_billion,Global,https://data.sec.gov/api/xbrl/companyfacts/CIK0000320193.json,sec_filing_10k,direct
+Apple,2024-09-28,ai_boom,Payments to acquire PP&E (annual capex),capex_trend,9.45,USD_billion,Global,https://data.sec.gov/api/xbrl/companyfacts/CIK0000320193.json,sec_filing_10k,direct
+Apple,2024-06-10,ai_boom,Apple Intelligence on-device/cloud AI announced,ai_ml_infrastructure,,,Global,https://www.apple.com/newsroom/2024/06/introducing-apple-intelligence-for-iphone-ipad-and-mac/,press_release,direct
+Apple,2020-07-21,pre_ai_boom,Commitment to be 100% carbon neutral for supply chain & products by 2030,power_energy_commitments,2030,carbon_neutral_target_year,Global,https://www.apple.com/environment/,company_commitment,direct
+Industry,2023-00-00,ai_boom,US data center electricity consumption,power_energy_commitments,176,TWh_per_year,USA,https://eta.lbl.gov/publications/united-states-data-centers-energy,government_lab_lbnl,direct
+Industry,2024-00-00,current,Global data centre electricity demand (IEA estimate),power_energy_commitments,415,TWh_per_year,Global,https://www.iea.org/reports/energy-and-ai,iea_report,direct
+Industry,2030-00-00,forward_looking,Global data centre electricity demand (IEA base projection),power_energy_commitments,945,TWh_per_year,Global,https://www.iea.org/reports/energy-and-ai,iea_report,estimated

@@ -1,0 +1,6 @@
+scenario,year,global_dc_electricity_twh,hyperscaler_capex_usd_b,nuclear_share_hyperscaler_power_pct,renewable_ppa_share_pct,avg_pue,grid_constraint_index,key_assumption
+conservative,2030,720,280,12,55,1.18,medium,AI workload growth moderates; efficiency gains from chips and cooling
+base_case,2030,945,380,18,48,1.15,high,IEA Energy & AI trajectory; continued GPU cluster buildout
+aggressive,2030,1200,520,22,42,1.12,very_high,AGI-scale training clusters; faster regional expansion
+grid_constrained,2030,800,300,25,40,1.16,binding,Interconnection queues and transmission limit new capacity; more behind-the-meter nuclear/gas
+base_case,2028,620,320,15,50,1.16,high,Mid-point interpolation toward IEA 2030

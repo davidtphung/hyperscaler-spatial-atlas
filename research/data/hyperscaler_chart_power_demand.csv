@@ -1,0 +1,8 @@
+year,us_dc_electricity_twh,global_dc_electricity_twh,source,confidence
+2015,90,250,LBNL/IEA historical,estimated
+2018,120,280,LBNL/IEA historical,estimated
+2020,150,320,LBNL/IEA,estimated
+2023,176,380,LBNL,direct
+2024,200,415,IEA Energy & AI,direct
+2028,280,620,Model base_case,estimated
+2030,350,945,IEA base / model,estimated

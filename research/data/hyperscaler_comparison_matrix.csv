@@ -1,0 +1,26 @@
+company,era,metric,value,year,source,confidence
+Amazon,pre_ai_boom,annual_capex_usd_b,60.84,2022,SEC 10-K,direct
+Amazon,ai_boom,annual_capex_usd_b,83,2024,Earnings release,direct
+Microsoft,pre_ai_boom,annual_capex_usd_b,28.11,FY2023,SEC 10-K,direct
+Microsoft,ai_boom,annual_capex_usd_b,44.48,FY2024,SEC 10-K,direct
+Microsoft,current,annual_capex_usd_b,64.55,FY2025,SEC 10-K,direct
+Alphabet,pre_ai_boom,annual_capex_usd_b,32.25,2023,SEC 10-K,direct
+Alphabet,ai_boom,annual_capex_usd_b,52.53,2024,SEC 10-K,direct
+Alphabet,current,annual_capex_usd_b,91.45,2025,SEC 10-K,direct
+Meta,pre_ai_boom,annual_capex_usd_b,27.05,2023,SEC 10-K,direct
+Meta,ai_boom,annual_capex_usd_b,37.26,2024,SEC 10-K,direct
+Meta,current,annual_capex_usd_b,69.69,2025,SEC 10-K,direct
+Oracle,pre_ai_boom,annual_capex_usd_b,8.70,FY2023,SEC 10-K,direct
+Oracle,current,annual_capex_usd_b,55.66,FY2026,SEC 10-K,direct
+Apple,pre_ai_boom,annual_capex_usd_b,11.09,FY2021,SEC 10-K,direct
+Apple,ai_boom,annual_capex_usd_b,9.45,FY2024,SEC 10-K,direct
+Amazon,current,cloud_regions,39,2025,AWS website,direct
+Amazon,current,availability_zones,123,2025,AWS website,direct
+Microsoft,ai_boom,nuclear_ppa_mw,835,2024,Constellation/Microsoft,direct
+Meta,current,nuclear_ppa_mw,2609,2026,Vistra/Meta PR,direct
+Amazon,ai_boom,nuclear_ppa_mw,960,2024,Talen/AWS PR,direct
+Industry,pre_ai_boom,us_dc_electricity_twh,176,2023,LBNL,direct
+Industry,current,global_dc_electricity_twh,415,2024,IEA,direct
+Hyperscaler cohort,pre_ai_boom,combined_capex_usd_b,149,2022,SEC aggregated,estimated
+Hyperscaler cohort,current,combined_capex_usd_b,355,2025,SEC aggregated,estimated
+Hyperscaler cohort,ai_boom,capex_cagr_percent,38,2022-2025,Model from SEC,estimated

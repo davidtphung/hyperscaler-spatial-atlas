@@ -1,0 +1,202 @@
+#!/usr/bin/env python3
+"""Generate hyperscaler public-data research CSV deliverables."""
+import csv
+from pathlib import Path
+
+OUT = Path(__file__).parent / "data"
+
+CHRONOLOGY_FIELDS = [
+    "company", "date", "era", "event_or_metric", "category", "value", "unit",
+    "geography", "source_url", "source_type", "confidence",
+]
+
+def write_csv(name: str, rows: list[dict], fields: list[str]):
+    path = OUT / name
+    with path.open("w", newline="", encoding="utf-8") as f:
+        w = csv.DictWriter(f, fieldnames=fields, extrasaction="ignore")
+        w.writeheader()
+        w.writerows(rows)
+    print(f"Wrote {path} ({len(rows)} rows)")
+
+def main():
+    chronology = [
+        # AMAZON / AWS
+        {"company": "Amazon", "date": "1994-07-05", "era": "pre_ai_boom", "event_or_metric": "Amazon.com founded", "category": "corporate_founding", "value": "", "unit": "", "geography": "USA", "source_url": "https://www.aboutamazon.com/what-we-do/company-facts", "source_type": "company_website", "confidence": "direct"},
+        {"company": "Amazon/AWS", "date": "2006-03-14", "era": "pre_ai_boom", "event_or_metric": "Amazon Web Services (S3/EC2) launched", "category": "cloud_infrastructure_buildout", "value": "", "unit": "", "geography": "Global", "source_url": "https://aws.amazon.com/about-aws/", "source_type": "company_blog", "confidence": "direct"},
+        {"company": "Amazon/AWS", "date": "2011-00-00", "era": "pre_ai_boom", "event_or_metric": "Global region expansion accelerates", "category": "data_center_expansion", "value": "", "unit": "", "geography": "Global", "source_url": "https://aws.amazon.com/about-aws/global-infrastructure/", "source_type": "company_website", "confidence": "direct"},
+        {"company": "Amazon", "date": "2019-09-19", "era": "pre_ai_boom", "event_or_metric": "Climate Pledge co-founded; net-zero 2040 target", "category": "power_energy_commitments", "value": "2040", "unit": "net_zero_target_year", "geography": "Global", "source_url": "https://www.theclimatepledge.com/", "source_type": "company_commitment", "confidence": "direct"},
+        {"company": "Amazon", "date": "2020-12-31", "era": "pre_ai_boom", "event_or_metric": "Property & equipment additions (cash flow)", "category": "capex_trend", "value": "57.98", "unit": "USD_billion", "geography": "Global", "source_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001018724.json", "source_type": "sec_filing_10k", "confidence": "direct"},
+        {"company": "Amazon", "date": "2021-12-31", "era": "pre_ai_boom", "event_or_metric": "Property & equipment additions (cash flow)", "category": "capex_trend", "value": "72.33", "unit": "USD_billion", "geography": "Global", "source_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001018724.json", "source_type": "sec_filing_10k", "confidence": "direct"},
+        {"company": "Amazon", "date": "2022-12-31", "era": "pre_ai_boom", "event_or_metric": "Property & equipment additions (cash flow)", "category": "capex_trend", "value": "60.84", "unit": "USD_billion", "geography": "Global", "source_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001018724.json", "source_type": "sec_filing_10k", "confidence": "direct"},
+        {"company": "Amazon/AWS", "date": "2023-00-00", "era": "ai_boom", "event_or_metric": "Custom AI chips Trainium/Inferentia scale for ML workloads", "category": "ai_ml_infrastructure", "value": "", "unit": "", "geography": "Global", "source_url": "https://aws.amazon.com/ai/machine-learning/trainium/", "source_type": "company_website", "confidence": "direct"},
+        {"company": "Amazon", "date": "2023-09-25", "era": "ai_boom", "event_or_metric": "Amazon invests up to $4B in Anthropic", "category": "ai_ml_infrastructure", "value": "4", "unit": "USD_billion", "geography": "USA", "source_url": "https://www.aboutamazon.com/news/company-news/amazon-anthropic-ai-investment", "source_type": "press_release", "confidence": "direct"},
+        {"company": "Amazon", "date": "2024-00-00", "era": "ai_boom", "event_or_metric": "Reported annual capex surge tied to AWS/AI infrastructure", "category": "capex_trend", "value": "83", "unit": "USD_billion", "geography": "Global", "source_url": "https://ir.aboutamazon.com/news-release/news-release-details/2025/Amazon-com-Announces-Fourth-Quarter-Results/", "source_type": "earnings_release", "confidence": "direct"},
+        {"company": "Amazon/AWS", "date": "2025-00-00", "era": "current", "event_or_metric": "AWS global infrastructure: 39 regions, 123 AZs (announced plans for more)", "category": "data_center_expansion", "value": "39", "unit": "regions", "geography": "Global", "source_url": "https://aws.amazon.com/about-aws/global-infrastructure/", "source_type": "company_website", "confidence": "direct"},
+        {"company": "Amazon/AWS", "date": "2024-03-04", "era": "ai_boom", "event_or_metric": "Talen Energy expands nuclear PPA with Amazon at Susquehanna", "category": "nuclear_renewables_ppa", "value": "960", "unit": "MW", "geography": "Pennsylvania USA", "source_url": "https://ir.talenenergy.com/news-releases/news-release-details/talen-energy-expands-nuclear-energy-relationship-amazon", "source_type": "press_release", "confidence": "direct"},
+        {"company": "Amazon", "date": "2025-00-00", "era": "ai_boom", "event_or_metric": "Signatory to pledge supporting tripling global nuclear capacity (CERAWeek)", "category": "public_policy_regulatory", "value": "", "unit": "", "geography": "Global", "source_url": "https://www.esgdive.com/news/amazon-google-meta-join-pledge-to-triple-global-nuclear-capacity-ceraweek/742470/", "source_type": "industry_news", "confidence": "direct"},
+
+        # MICROSOFT
+        {"company": "Microsoft", "date": "1975-04-04", "era": "pre_ai_boom", "event_or_metric": "Microsoft founded", "category": "corporate_founding", "value": "", "unit": "", "geography": "USA", "source_url": "https://www.microsoft.com/en-us/about", "source_type": "company_website", "confidence": "direct"},
+        {"company": "Microsoft/Azure", "date": "2010-02-01", "era": "pre_ai_boom", "event_or_metric": "Microsoft Azure general availability", "category": "cloud_infrastructure_buildout", "value": "", "unit": "", "geography": "Global", "source_url": "https://azure.microsoft.com/", "source_type": "company_website", "confidence": "direct"},
+        {"company": "Microsoft", "date": "2019-07-22", "era": "pre_ai_boom", "event_or_metric": "OpenAI partnership; $1B investment announced", "category": "ai_ml_infrastructure", "value": "1", "unit": "USD_billion", "geography": "USA", "source_url": "https://blogs.microsoft.com/blog/2019/07/22/openai-forms-exclusive-computing-partnership-with-microsoft-to-build-new-azure-ai-supercomputing-technologies/", "source_type": "company_blog", "confidence": "direct"},
+        {"company": "Microsoft", "date": "2020-01-16", "era": "pre_ai_boom", "event_or_metric": "Carbon negative by 2030 commitment", "category": "power_energy_commitments", "value": "2030", "unit": "carbon_negative_target_year", "geography": "Global", "source_url": "https://blogs.microsoft.com/blog/2020/01/16/microsoft-will-be-carbon-negative-by-2030/", "source_type": "company_blog", "confidence": "direct"},
+        {"company": "Microsoft", "date": "2021-06-30", "era": "pre_ai_boom", "event_or_metric": "Payments to acquire PP&E (annual capex)", "category": "capex_trend", "value": "20.62", "unit": "USD_billion", "geography": "Global", "source_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000789019.json", "source_type": "sec_filing_10k", "confidence": "direct"},
+        {"company": "Microsoft", "date": "2022-06-30", "era": "pre_ai_boom", "event_or_metric": "Payments to acquire PP&E (annual capex)", "category": "capex_trend", "value": "23.89", "unit": "USD_billion", "geography": "Global", "source_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000789019.json", "source_type": "sec_filing_10k", "confidence": "direct"},
+        {"company": "Microsoft", "date": "2023-06-30", "era": "ai_boom", "event_or_metric": "Payments to acquire PP&E (annual capex)", "category": "capex_trend", "value": "28.11", "unit": "USD_billion", "geography": "Global", "source_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000789019.json", "source_type": "sec_filing_10k", "confidence": "direct"},
+        {"company": "Microsoft", "date": "2023-02-07", "era": "ai_boom", "event_or_metric": "Bing/Copilot AI integration announced (post-ChatGPT)", "category": "ai_ml_infrastructure", "value": "", "unit": "", "geography": "Global", "source_url": "https://blogs.microsoft.com/blog/2023/02/07/reinventing-search-with-a-new-ai-powered-microsoft-bing-and-edge-your-copilot-for-the-web/", "source_type": "company_blog", "confidence": "direct"},
+        {"company": "Microsoft", "date": "2024-06-30", "era": "ai_boom", "event_or_metric": "Payments to acquire PP&E (annual capex)", "category": "capex_trend", "value": "44.48", "unit": "USD_billion", "geography": "Global", "source_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000789019.json", "source_type": "sec_filing_10k", "confidence": "direct"},
+        {"company": "Microsoft", "date": "2024-09-20", "era": "ai_boom", "event_or_metric": "Constellation Energy PPA to restart Three Mile Island Unit 1 for Microsoft", "category": "nuclear_renewables_ppa", "value": "835", "unit": "MW", "geography": "Pennsylvania USA", "source_url": "https://www.world-nuclear-news.org/articles/constellation-to-restart-three-mile-island-unit-powering-microsoft", "source_type": "industry_news", "confidence": "direct"},
+        {"company": "Microsoft", "date": "2025-06-30", "era": "current", "event_or_metric": "Payments to acquire PP&E (annual capex)", "category": "capex_trend", "value": "64.55", "unit": "USD_billion", "geography": "Global", "source_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000789019.json", "source_type": "sec_filing_10k", "confidence": "direct"},
+        {"company": "Microsoft", "date": "2024-06-30", "era": "ai_boom", "event_or_metric": "Azure & other cloud services revenue growth", "category": "cloud_infrastructure_buildout", "value": "29", "unit": "percent_yoy", "geography": "Global", "source_url": "https://www.microsoft.com/en-us/investor/earnings/FY-2024-Q4/press-release-webcast", "source_type": "earnings_release", "confidence": "direct"},
+
+        # ALPHABET / GOOGLE CLOUD
+        {"company": "Alphabet/Google", "date": "1998-09-04", "era": "pre_ai_boom", "event_or_metric": "Google founded", "category": "corporate_founding", "value": "", "unit": "", "geography": "USA", "source_url": "https://about.google/", "source_type": "company_website", "confidence": "direct"},
+        {"company": "Google Cloud", "date": "2008-04-00", "era": "pre_ai_boom", "event_or_metric": "Google App Engine launched (cloud platform origin)", "category": "cloud_infrastructure_buildout", "value": "", "unit": "", "geography": "Global", "source_url": "https://cloud.google.com/", "source_type": "company_website", "confidence": "direct"},
+        {"company": "Google", "date": "2016-05-18", "era": "pre_ai_boom", "event_or_metric": "TPU (Tensor Processing Unit) announced at Google I/O", "category": "ai_ml_infrastructure", "value": "", "unit": "", "geography": "Global", "source_url": "https://cloud.google.com/tpu", "source_type": "company_website", "confidence": "direct"},
+        {"company": "Alphabet", "date": "2021-12-31", "era": "pre_ai_boom", "event_or_metric": "Payments to acquire PP&E (annual capex)", "category": "capex_trend", "value": "24.64", "unit": "USD_billion", "geography": "Global", "source_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001652044.json", "source_type": "sec_filing_10k", "confidence": "direct"},
+        {"company": "Alphabet", "date": "2022-12-31", "era": "pre_ai_boom", "event_or_metric": "Payments to acquire PP&E (annual capex)", "category": "capex_trend", "value": "31.48", "unit": "USD_billion", "geography": "Global", "source_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001652044.json", "source_type": "sec_filing_10k", "confidence": "direct"},
+        {"company": "Alphabet", "date": "2023-12-31", "era": "ai_boom", "event_or_metric": "Payments to acquire PP&E (annual capex)", "category": "capex_trend", "value": "32.25", "unit": "USD_billion", "geography": "Global", "source_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001652044.json", "source_type": "sec_filing_10k", "confidence": "direct"},
+        {"company": "Alphabet", "date": "2023-12-06", "era": "ai_boom", "event_or_metric": "Gemini multimodal AI model announced", "category": "ai_ml_infrastructure", "value": "", "unit": "", "geography": "Global", "source_url": "https://blog.google/technology/ai/google-gemini-ai/", "source_type": "company_blog", "confidence": "direct"},
+        {"company": "Alphabet", "date": "2024-12-31", "era": "ai_boom", "event_or_metric": "Payments to acquire PP&E (annual capex)", "category": "capex_trend", "value": "52.53", "unit": "USD_billion", "geography": "Global", "source_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001652044.json", "source_type": "sec_filing_10k", "confidence": "direct"},
+        {"company": "Alphabet", "date": "2025-12-31", "era": "current", "event_or_metric": "Payments to acquire PP&E (annual capex)", "category": "capex_trend", "value": "91.45", "unit": "USD_billion", "geography": "Global", "source_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001652044.json", "source_type": "sec_filing_10k", "confidence": "direct"},
+        {"company": "Google", "date": "2024-00-00", "era": "ai_boom", "event_or_metric": "Kairos Power SMR agreement for nuclear-powered data centers", "category": "nuclear_renewables_ppa", "value": "", "unit": "", "geography": "USA", "source_url": "https://blog.google/inside-google/infrastructure/", "source_type": "company_blog", "confidence": "direct"},
+
+        # META
+        {"company": "Meta", "date": "2004-02-04", "era": "pre_ai_boom", "event_or_metric": "Facebook founded", "category": "corporate_founding", "value": "", "unit": "", "geography": "USA", "source_url": "https://www.meta.com/about/company-info/", "source_type": "company_website", "confidence": "direct"},
+        {"company": "Meta", "date": "2011-04-00", "era": "pre_ai_boom", "event_or_metric": "Open Compute Project launched", "category": "data_center_expansion", "value": "", "unit": "", "geography": "Global", "source_url": "https://www.opencompute.org/", "source_type": "industry_initiative", "confidence": "direct"},
+        {"company": "Meta", "date": "2021-12-31", "era": "pre_ai_boom", "event_or_metric": "Payments to acquire PP&E (annual capex)", "category": "capex_trend", "value": "18.69", "unit": "USD_billion", "geography": "Global", "source_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001326801.json", "source_type": "sec_filing_10k", "confidence": "direct"},
+        {"company": "Meta", "date": "2022-12-31", "era": "pre_ai_boom", "event_or_metric": "Payments to acquire PP&E (annual capex) — metaverse peak", "category": "capex_trend", "value": "31.43", "unit": "USD_billion", "geography": "Global", "source_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001326801.json", "source_type": "sec_filing_10k", "confidence": "direct"},
+        {"company": "Meta", "date": "2023-12-31", "era": "ai_boom", "event_or_metric": "Payments to acquire PP&E (annual capex)", "category": "capex_trend", "value": "27.05", "unit": "USD_billion", "geography": "Global", "source_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001326801.json", "source_type": "sec_filing_10k", "confidence": "direct"},
+        {"company": "Meta", "date": "2024-12-31", "era": "ai_boom", "event_or_metric": "Payments to acquire PP&E (annual capex)", "category": "capex_trend", "value": "37.26", "unit": "USD_billion", "geography": "Global", "source_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001326801.json", "source_type": "sec_filing_10k", "confidence": "direct"},
+        {"company": "Meta", "date": "2025-12-31", "era": "current", "event_or_metric": "Payments to acquire PP&E (annual capex)", "category": "capex_trend", "value": "69.69", "unit": "USD_billion", "geography": "Global", "source_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001326801.json", "source_type": "sec_filing_10k", "confidence": "direct"},
+        {"company": "Meta", "date": "2026-01-09", "era": "current", "event_or_metric": "20-year nuclear PPAs with Vistra (Perry, Davis-Besse, Beaver Valley)", "category": "nuclear_renewables_ppa", "value": "2609", "unit": "MW", "geography": "Ohio/Pennsylvania USA", "source_url": "https://investor.vistracorp.com/2026-01-09-Vistra-and-Meta-Announce-Agreements-to-Support-Nuclear-Plants-in-PJM-and-Add-New-Nuclear-Generation-to-the-Grid", "source_type": "press_release", "confidence": "direct"},
+        {"company": "Meta", "date": "2026-01-00", "era": "current", "event_or_metric": "Nuclear energy RFP for 1–4 GW US capacity", "category": "nuclear_renewables_ppa", "value": "1000-4000", "unit": "MW", "geography": "USA", "source_url": "https://about.fb.com/news/2026/01/meta-nuclear-energy-projects-power-american-ai-leadership/", "source_type": "press_release", "confidence": "direct"},
+
+        # ORACLE
+        {"company": "Oracle", "date": "1977-06-16", "era": "pre_ai_boom", "event_or_metric": "Oracle founded", "category": "corporate_founding", "value": "", "unit": "", "geography": "USA", "source_url": "https://www.oracle.com/corporate/", "source_type": "company_website", "confidence": "direct"},
+        {"company": "Oracle Cloud", "date": "2016-00-00", "era": "pre_ai_boom", "event_or_metric": "Oracle Cloud Infrastructure (Gen 2) expansion", "category": "cloud_infrastructure_buildout", "value": "", "unit": "", "geography": "Global", "source_url": "https://www.oracle.com/cloud/", "source_type": "company_website", "confidence": "direct"},
+        {"company": "Oracle", "date": "2023-05-31", "era": "ai_boom", "event_or_metric": "Payments to acquire PP&E (annual capex)", "category": "capex_trend", "value": "8.70", "unit": "USD_billion", "geography": "Global", "source_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001341439.json", "source_type": "sec_filing_10k", "confidence": "direct"},
+        {"company": "Oracle", "date": "2025-01-21", "era": "ai_boom", "event_or_metric": "Stargate AI infrastructure initiative announced with OpenAI, SoftBank", "category": "ai_ml_infrastructure", "value": "500", "unit": "USD_billion_program", "geography": "USA", "source_url": "https://openai.com/index/announcing-the-stargate-project/", "source_type": "press_release", "confidence": "direct"},
+        {"company": "Oracle", "date": "2025-05-31", "era": "current", "event_or_metric": "Payments to acquire PP&E (annual capex)", "category": "capex_trend", "value": "21.21", "unit": "USD_billion", "geography": "Global", "source_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001341439.json", "source_type": "sec_filing_10k", "confidence": "direct"},
+        {"company": "Oracle", "date": "2026-05-31", "era": "current", "event_or_metric": "Payments to acquire PP&E (annual capex)", "category": "capex_trend", "value": "55.66", "unit": "USD_billion", "geography": "Global", "source_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001341439.json", "source_type": "sec_filing_10k", "confidence": "direct"},
+
+        # APPLE
+        {"company": "Apple", "date": "1976-04-01", "era": "pre_ai_boom", "event_or_metric": "Apple founded", "category": "corporate_founding", "value": "", "unit": "", "geography": "USA", "source_url": "https://www.apple.com/", "source_type": "company_website", "confidence": "direct"},
+        {"company": "Apple", "date": "2021-09-25", "era": "pre_ai_boom", "event_or_metric": "Payments to acquire PP&E (annual capex)", "category": "capex_trend", "value": "11.09", "unit": "USD_billion", "geography": "Global", "source_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000320193.json", "source_type": "sec_filing_10k", "confidence": "direct"},
+        {"company": "Apple", "date": "2024-09-28", "era": "ai_boom", "event_or_metric": "Payments to acquire PP&E (annual capex)", "category": "capex_trend", "value": "9.45", "unit": "USD_billion", "geography": "Global", "source_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000320193.json", "source_type": "sec_filing_10k", "confidence": "direct"},
+        {"company": "Apple", "date": "2024-06-10", "era": "ai_boom", "event_or_metric": "Apple Intelligence on-device/cloud AI announced", "category": "ai_ml_infrastructure", "value": "", "unit": "", "geography": "Global", "source_url": "https://www.apple.com/newsroom/2024/06/introducing-apple-intelligence-for-iphone-ipad-and-mac/", "source_type": "press_release", "confidence": "direct"},
+        {"company": "Apple", "date": "2020-07-21", "era": "pre_ai_boom", "event_or_metric": "Commitment to be 100% carbon neutral for supply chain & products by 2030", "category": "power_energy_commitments", "value": "2030", "unit": "carbon_neutral_target_year", "geography": "Global", "source_url": "https://www.apple.com/environment/", "source_type": "company_commitment", "confidence": "direct"},
+
+        # INDUSTRY / AGENCY BENCHMARKS
+        {"company": "Industry", "date": "2023-00-00", "era": "ai_boom", "event_or_metric": "US data center electricity consumption", "category": "power_energy_commitments", "value": "176", "unit": "TWh_per_year", "geography": "USA", "source_url": "https://eta.lbl.gov/publications/united-states-data-centers-energy", "source_type": "government_lab_lbnl", "confidence": "direct"},
+        {"company": "Industry", "date": "2024-00-00", "era": "current", "event_or_metric": "Global data centre electricity demand (IEA estimate)", "category": "power_energy_commitments", "value": "415", "unit": "TWh_per_year", "geography": "Global", "source_url": "https://www.iea.org/reports/energy-and-ai", "source_type": "iea_report", "confidence": "direct"},
+        {"company": "Industry", "date": "2030-00-00", "era": "forward_looking", "event_or_metric": "Global data centre electricity demand (IEA base projection)", "category": "power_energy_commitments", "value": "945", "unit": "TWh_per_year", "geography": "Global", "source_url": "https://www.iea.org/reports/energy-and-ai", "source_type": "iea_report", "confidence": "estimated"},
+    ]
+
+    comparison = [
+        {"company": "Amazon", "era": "pre_ai_boom", "metric": "annual_capex_usd_b", "value": "60.84", "year": "2022", "source": "SEC 10-K", "confidence": "direct"},
+        {"company": "Amazon", "era": "ai_boom", "metric": "annual_capex_usd_b", "value": "83", "year": "2024", "source": "Earnings release", "confidence": "direct"},
+        {"company": "Microsoft", "era": "pre_ai_boom", "metric": "annual_capex_usd_b", "value": "28.11", "year": "FY2023", "source": "SEC 10-K", "confidence": "direct"},
+        {"company": "Microsoft", "era": "ai_boom", "metric": "annual_capex_usd_b", "value": "44.48", "year": "FY2024", "source": "SEC 10-K", "confidence": "direct"},
+        {"company": "Microsoft", "era": "current", "metric": "annual_capex_usd_b", "value": "64.55", "year": "FY2025", "source": "SEC 10-K", "confidence": "direct"},
+        {"company": "Alphabet", "era": "pre_ai_boom", "metric": "annual_capex_usd_b", "value": "32.25", "year": "2023", "source": "SEC 10-K", "confidence": "direct"},
+        {"company": "Alphabet", "era": "ai_boom", "metric": "annual_capex_usd_b", "value": "52.53", "year": "2024", "source": "SEC 10-K", "confidence": "direct"},
+        {"company": "Alphabet", "era": "current", "metric": "annual_capex_usd_b", "value": "91.45", "year": "2025", "source": "SEC 10-K", "confidence": "direct"},
+        {"company": "Meta", "era": "pre_ai_boom", "metric": "annual_capex_usd_b", "value": "27.05", "year": "2023", "source": "SEC 10-K", "confidence": "direct"},
+        {"company": "Meta", "era": "ai_boom", "metric": "annual_capex_usd_b", "value": "37.26", "year": "2024", "source": "SEC 10-K", "confidence": "direct"},
+        {"company": "Meta", "era": "current", "metric": "annual_capex_usd_b", "value": "69.69", "year": "2025", "source": "SEC 10-K", "confidence": "direct"},
+        {"company": "Oracle", "era": "pre_ai_boom", "metric": "annual_capex_usd_b", "value": "8.70", "year": "FY2023", "source": "SEC 10-K", "confidence": "direct"},
+        {"company": "Oracle", "era": "current", "metric": "annual_capex_usd_b", "value": "55.66", "year": "FY2026", "source": "SEC 10-K", "confidence": "direct"},
+        {"company": "Apple", "era": "pre_ai_boom", "metric": "annual_capex_usd_b", "value": "11.09", "year": "FY2021", "source": "SEC 10-K", "confidence": "direct"},
+        {"company": "Apple", "era": "ai_boom", "metric": "annual_capex_usd_b", "value": "9.45", "year": "FY2024", "source": "SEC 10-K", "confidence": "direct"},
+        {"company": "Amazon", "era": "current", "metric": "cloud_regions", "value": "39", "year": "2025", "source": "AWS website", "confidence": "direct"},
+        {"company": "Amazon", "era": "current", "metric": "availability_zones", "value": "123", "year": "2025", "source": "AWS website", "confidence": "direct"},
+        {"company": "Microsoft", "era": "ai_boom", "metric": "nuclear_ppa_mw", "value": "835", "year": "2024", "source": "Constellation/Microsoft", "confidence": "direct"},
+        {"company": "Meta", "era": "current", "metric": "nuclear_ppa_mw", "value": "2609", "year": "2026", "source": "Vistra/Meta PR", "confidence": "direct"},
+        {"company": "Amazon", "era": "ai_boom", "metric": "nuclear_ppa_mw", "value": "960", "year": "2024", "source": "Talen/AWS PR", "confidence": "direct"},
+        {"company": "Industry", "era": "pre_ai_boom", "metric": "us_dc_electricity_twh", "value": "176", "year": "2023", "source": "LBNL", "confidence": "direct"},
+        {"company": "Industry", "era": "current", "metric": "global_dc_electricity_twh", "value": "415", "year": "2024", "source": "IEA", "confidence": "direct"},
+        {"company": "Hyperscaler cohort", "era": "pre_ai_boom", "metric": "combined_capex_usd_b", "value": "149", "year": "2022", "source": "SEC aggregated", "confidence": "estimated"},
+        {"company": "Hyperscaler cohort", "era": "current", "metric": "combined_capex_usd_b", "value": "355", "year": "2025", "source": "SEC aggregated", "confidence": "estimated"},
+        {"company": "Hyperscaler cohort", "era": "ai_boom", "metric": "capex_cagr_percent", "value": "38", "year": "2022-2025", "source": "Model from SEC", "confidence": "estimated"},
+    ]
+
+    forecast = [
+        {"scenario": "conservative", "year": "2030", "global_dc_electricity_twh": "720", "hyperscaler_capex_usd_b": "280", "nuclear_share_hyperscaler_power_pct": "12", "renewable_ppa_share_pct": "55", "avg_pue": "1.18", "grid_constraint_index": "medium", "key_assumption": "AI workload growth moderates; efficiency gains from chips and cooling"},
+        {"scenario": "base_case", "year": "2030", "global_dc_electricity_twh": "945", "hyperscaler_capex_usd_b": "380", "nuclear_share_hyperscaler_power_pct": "18", "renewable_ppa_share_pct": "48", "avg_pue": "1.15", "grid_constraint_index": "high", "key_assumption": "IEA Energy & AI trajectory; continued GPU cluster buildout"},
+        {"scenario": "aggressive", "year": "2030", "global_dc_electricity_twh": "1200", "hyperscaler_capex_usd_b": "520", "nuclear_share_hyperscaler_power_pct": "22", "renewable_ppa_share_pct": "42", "avg_pue": "1.12", "grid_constraint_index": "very_high", "key_assumption": "AGI-scale training clusters; faster regional expansion"},
+        {"scenario": "grid_constrained", "year": "2030", "global_dc_electricity_twh": "800", "hyperscaler_capex_usd_b": "300", "nuclear_share_hyperscaler_power_pct": "25", "renewable_ppa_share_pct": "40", "avg_pue": "1.16", "grid_constraint_index": "binding", "key_assumption": "Interconnection queues and transmission limit new capacity; more behind-the-meter nuclear/gas"},
+        {"scenario": "base_case", "year": "2028", "global_dc_electricity_twh": "620", "hyperscaler_capex_usd_b": "320", "nuclear_share_hyperscaler_power_pct": "15", "renewable_ppa_share_pct": "50", "avg_pue": "1.16", "grid_constraint_index": "high", "key_assumption": "Mid-point interpolation toward IEA 2030"},
+    ]
+
+    chart_capex = [
+        {"company": "Amazon", "fiscal_year": "2020", "capex_usd_b": 57.98, "era": "pre_ai_boom", "source": "SEC"},
+        {"company": "Amazon", "fiscal_year": "2021", "capex_usd_b": 72.33, "era": "pre_ai_boom", "source": "SEC"},
+        {"company": "Amazon", "fiscal_year": "2022", "capex_usd_b": 60.84, "era": "pre_ai_boom", "source": "SEC"},
+        {"company": "Amazon", "fiscal_year": "2024", "capex_usd_b": 83.0, "era": "ai_boom", "source": "Earnings"},
+        {"company": "Microsoft", "fiscal_year": "2021", "capex_usd_b": 20.62, "era": "pre_ai_boom", "source": "SEC"},
+        {"company": "Microsoft", "fiscal_year": "2022", "capex_usd_b": 23.89, "era": "pre_ai_boom", "source": "SEC"},
+        {"company": "Microsoft", "fiscal_year": "2023", "capex_usd_b": 28.11, "era": "ai_boom", "source": "SEC"},
+        {"company": "Microsoft", "fiscal_year": "2024", "capex_usd_b": 44.48, "era": "ai_boom", "source": "SEC"},
+        {"company": "Microsoft", "fiscal_year": "2025", "capex_usd_b": 64.55, "era": "current", "source": "SEC"},
+        {"company": "Alphabet", "fiscal_year": "2021", "capex_usd_b": 24.64, "era": "pre_ai_boom", "source": "SEC"},
+        {"company": "Alphabet", "fiscal_year": "2022", "capex_usd_b": 31.48, "era": "pre_ai_boom", "source": "SEC"},
+        {"company": "Alphabet", "fiscal_year": "2023", "capex_usd_b": 32.25, "era": "ai_boom", "source": "SEC"},
+        {"company": "Alphabet", "fiscal_year": "2024", "capex_usd_b": 52.53, "era": "ai_boom", "source": "SEC"},
+        {"company": "Alphabet", "fiscal_year": "2025", "capex_usd_b": 91.45, "era": "current", "source": "SEC"},
+        {"company": "Meta", "fiscal_year": "2021", "capex_usd_b": 18.69, "era": "pre_ai_boom", "source": "SEC"},
+        {"company": "Meta", "fiscal_year": "2022", "capex_usd_b": 31.43, "era": "pre_ai_boom", "source": "SEC"},
+        {"company": "Meta", "fiscal_year": "2023", "capex_usd_b": 27.05, "era": "ai_boom", "source": "SEC"},
+        {"company": "Meta", "fiscal_year": "2024", "capex_usd_b": 37.26, "era": "ai_boom", "source": "SEC"},
+        {"company": "Meta", "fiscal_year": "2025", "capex_usd_b": 69.69, "era": "current", "source": "SEC"},
+        {"company": "Oracle", "fiscal_year": "2023", "capex_usd_b": 8.70, "era": "pre_ai_boom", "source": "SEC"},
+        {"company": "Oracle", "fiscal_year": "2025", "capex_usd_b": 21.21, "era": "ai_boom", "source": "SEC"},
+        {"company": "Oracle", "fiscal_year": "2026", "capex_usd_b": 55.66, "era": "current", "source": "SEC"},
+    ]
+
+    chart_power = [
+        {"year": "2015", "us_dc_electricity_twh": 90, "global_dc_electricity_twh": 250, "source": "LBNL/IEA historical", "confidence": "estimated"},
+        {"year": "2018", "us_dc_electricity_twh": 120, "global_dc_electricity_twh": 280, "source": "LBNL/IEA historical", "confidence": "estimated"},
+        {"year": "2020", "us_dc_electricity_twh": 150, "global_dc_electricity_twh": 320, "source": "LBNL/IEA", "confidence": "estimated"},
+        {"year": "2023", "us_dc_electricity_twh": 176, "global_dc_electricity_twh": 380, "source": "LBNL", "confidence": "direct"},
+        {"year": "2024", "us_dc_electricity_twh": 200, "global_dc_electricity_twh": 415, "source": "IEA Energy & AI", "confidence": "direct"},
+        {"year": "2028", "us_dc_electricity_twh": 280, "global_dc_electricity_twh": 620, "source": "Model base_case", "confidence": "estimated"},
+        {"year": "2030", "us_dc_electricity_twh": 350, "global_dc_electricity_twh": 945, "source": "IEA base / model", "confidence": "estimated"},
+    ]
+
+    chart_energy_mix = [
+        {"company": "Microsoft", "year": "2024", "renewables_pct": 45, "nuclear_pct": 8, "grid_mix_pct": 40, "gas_bridge_pct": 5, "storage_flex_pct": 2, "source": "Estimated from disclosed PPAs", "confidence": "estimated"},
+        {"company": "Amazon", "year": "2024", "renewables_pct": 50, "nuclear_pct": 5, "grid_mix_pct": 38, "gas_bridge_pct": 5, "storage_flex_pct": 2, "source": "Estimated from Climate Pledge + nuclear deals", "confidence": "estimated"},
+        {"company": "Google", "year": "2024", "renewables_pct": 55, "nuclear_pct": 6, "grid_mix_pct": 32, "gas_bridge_pct": 4, "storage_flex_pct": 3, "source": "Estimated from 24/7 carbon-free energy goal", "confidence": "estimated"},
+        {"company": "Meta", "year": "2026", "renewables_pct": 40, "nuclear_pct": 18, "grid_mix_pct": 35, "gas_bridge_pct": 4, "storage_flex_pct": 3, "source": "Estimated post-Vistra PPAs", "confidence": "estimated"},
+        {"company": "Oracle", "year": "2026", "renewables_pct": 30, "nuclear_pct": 5, "grid_mix_pct": 55, "gas_bridge_pct": 8, "storage_flex_pct": 2, "source": "Estimated; Stargate gas-heavy regions", "confidence": "estimated"},
+    ]
+
+    bibliography = [
+        {"id": "SEC-MSFT", "title": "Microsoft Corp SEC XBRL Company Facts", "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000789019.json", "type": "sec_filing", "accessed": "2026-06-28"},
+        {"id": "SEC-AMZN", "title": "Amazon.com Inc SEC XBRL Company Facts", "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001018724.json", "type": "sec_filing", "accessed": "2026-06-28"},
+        {"id": "SEC-GOOGL", "title": "Alphabet Inc SEC XBRL Company Facts", "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001652044.json", "type": "sec_filing", "accessed": "2026-06-28"},
+        {"id": "SEC-META", "title": "Meta Platforms SEC XBRL Company Facts", "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001326801.json", "type": "sec_filing", "accessed": "2026-06-28"},
+        {"id": "SEC-ORCL", "title": "Oracle Corp SEC XBRL Company Facts", "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001341439.json", "type": "sec_filing", "accessed": "2026-06-28"},
+        {"id": "SEC-AAPL", "title": "Apple Inc SEC XBRL Company Facts", "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000320193.json", "type": "sec_filing", "accessed": "2026-06-28"},
+        {"id": "IEA-2025", "title": "IEA Energy and AI Report", "url": "https://www.iea.org/reports/energy-and-ai", "type": "agency_report", "accessed": "2026-06-28"},
+        {"id": "LBNL-2024", "title": "United States Data Centers Energy Usage (LBNL)", "url": "https://eta.lbl.gov/publications/united-states-data-centers-energy", "type": "government_lab", "accessed": "2026-06-28"},
+        {"id": "AWS-INFRA", "title": "AWS Global Infrastructure", "url": "https://aws.amazon.com/about-aws/global-infrastructure/", "type": "company_website", "accessed": "2026-06-28"},
+        {"id": "MSFT-FY24Q4", "title": "Microsoft FY24 Q4 Earnings Release", "url": "https://www.microsoft.com/en-us/investor/earnings/FY-2024-Q4/press-release-webcast", "type": "earnings_release", "accessed": "2026-06-28"},
+        {"id": "VISTRA-META", "title": "Vistra and Meta Nuclear PPAs", "url": "https://investor.vistracorp.com/2026-01-09-Vistra-and-Meta-Announce-Agreements-to-Support-Nuclear-Plants-in-PJM-and-Add-New-Nuclear-Generation-to-the-Grid", "type": "press_release", "accessed": "2026-06-28"},
+        {"id": "TALEN-AWS", "title": "Talen Energy Amazon Nuclear Expansion", "url": "https://ir.talenenergy.com/news-releases/news-release-details/talen-energy-expands-nuclear-energy-relationship-amazon", "type": "press_release", "accessed": "2026-06-28"},
+        {"id": "WNN-TMI", "title": "Constellation Three Mile Island restart for Microsoft", "url": "https://www.world-nuclear-news.org/articles/constellation-to-restart-three-mile-island-unit-powering-microsoft", "type": "industry_news", "accessed": "2026-06-28"},
+        {"id": "OPENAI-STARGATE", "title": "Announcing the Stargate Project", "url": "https://openai.com/index/announcing-the-stargate-project/", "type": "press_release", "accessed": "2026-06-28"},
+        {"id": "META-NUCLEAR-RFP", "title": "Meta Nuclear Energy Projects", "url": "https://about.fb.com/news/2026/01/meta-nuclear-energy-projects-power-american-ai-leadership/", "type": "press_release", "accessed": "2026-06-28"},
+    ]
+
+    write_csv("hyperscaler_master_chronology.csv", chronology, CHRONOLOGY_FIELDS)
+    write_csv("hyperscaler_comparison_matrix.csv", comparison, list(comparison[0].keys()))
+    write_csv("hyperscaler_forecast_scenarios.csv", forecast, list(forecast[0].keys()))
+    write_csv("hyperscaler_chart_capex.csv", chart_capex, list(chart_capex[0].keys()))
+    write_csv("hyperscaler_chart_power_demand.csv", chart_power, list(chart_power[0].keys()))
+    write_csv("hyperscaler_chart_energy_mix.csv", chart_energy_mix, list(chart_energy_mix[0].keys()))
+    write_csv("hyperscaler_bibliography.csv", bibliography, list(bibliography[0].keys()))
+
+if __name__ == "__main__":
+    main()
