@@ -284,17 +284,17 @@ export function MapApp() {
                   <BuilderCredit />
                   <p className="text-[10px] text-[var(--text-tertiary)]">
                     <a
-                      href={routeHref('sources')}
+                      href={routeHref('dashboard')}
                       className="underline decoration-[var(--border)] underline-offset-2 hover:text-[var(--accent)]"
                     >
-                      Data sources
+                      Overview
                     </a>
                     {' · '}
                     <a
-                      href={routeHref('about')}
+                      href={routeHref('timeline')}
                       className="underline decoration-[var(--border)] underline-offset-2 hover:text-[var(--accent)]"
                     >
-                      About
+                      Timeline
                     </a>
                   </p>
                 </div>

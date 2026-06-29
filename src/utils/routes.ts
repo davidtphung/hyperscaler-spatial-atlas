@@ -1,19 +1,31 @@
-export type AppRoute = 'map' | 'about' | 'sources'
+export type AppRoute =
+  | 'dashboard'
+  | 'timeline'
+  | 'map'
+  | 'compare'
+  | 'forecasts'
+  | 'sources'
+  | 'about'
 
 export function parseAppRoute(hash: string): AppRoute {
   const path = hash.replace(/^#/, '').replace(/^\//, '')
+  if (path === '' || path === 'dashboard') return 'dashboard'
+  if (path === 'timeline') return 'timeline'
+  if (path === 'map') return 'map'
+  if (path === 'compare') return 'compare'
+  if (path === 'forecasts') return 'forecasts'
   if (path === 'about') return 'about'
   if (path === 'sources') return 'sources'
-  return 'map'
+  return 'dashboard'
 }
 
 export function routeToHash(route: AppRoute): string {
-  if (route === 'map') return ''
+  if (route === 'dashboard') return '#/dashboard'
+  if (route === 'map') return '#/map'
   return `#/${route}`
 }
 
 export function routeHref(route: AppRoute): string {
   const base = import.meta.env.BASE_URL
-  const hash = routeToHash(route)
-  return `${base}${hash}`
+  return `${base}${routeToHash(route)}`
 }

@@ -1,0 +1,53 @@
+import type { ReactNode } from 'react'
+import type { AppRoute } from '../../utils/routes'
+import { SiteNav } from './SiteNav'
+import { BuilderCredit } from './BuilderCredit'
+import { routeHref } from '../../utils/routes'
+
+interface ExplorerLayoutProps {
+  route: AppRoute
+  title: string
+  lede: string
+  children: ReactNode
+  actions?: ReactNode
+}
+
+export function ExplorerLayout({ route, title, lede, children, actions }: ExplorerLayoutProps) {
+  return (
+    <div className="explorer-scroll flex min-h-dvh flex-col overflow-y-auto bg-[var(--canvas-bg)]">
+      <header className="sticky top-0 z-20 border-b border-[var(--border)] bg-[var(--surface)]/90 backdrop-blur-xl">
+        <div className="mx-auto max-w-6xl px-4 py-4 md:px-6 lg:px-8">
+          <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+            <a
+              href={routeHref('dashboard')}
+              className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--accent)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)]"
+            >
+              Hyperscaler Commitments Explorer
+            </a>
+            <SiteNav current={route} />
+          </div>
+          <div className="mt-4 flex flex-col gap-3 lg:flex-row lg:items-end lg:justify-between">
+            <div>
+              <h1 className="text-2xl font-semibold tracking-tight text-[var(--text-primary)] md:text-3xl">
+                {title}
+              </h1>
+              <p className="mt-2 max-w-2xl text-sm leading-relaxed text-[var(--text-secondary)] md:text-base">
+                {lede}
+              </p>
+            </div>
+            {actions && <div className="shrink-0">{actions}</div>}
+          </div>
+        </div>
+      </header>
+
+      <main className="mx-auto w-full max-w-6xl flex-1 px-4 py-8 md:px-6 lg:px-8">{children}</main>
+
+      <footer className="border-t border-[var(--border)] bg-[var(--surface)]/50 px-4 py-6 md:px-6 lg:px-8">
+        <div className="mx-auto flex max-w-6xl flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+          <BuilderCredit />
+          <SiteNav current={route} compact />
+        </div>
+      </footer>
+    </div>
+  )
+}

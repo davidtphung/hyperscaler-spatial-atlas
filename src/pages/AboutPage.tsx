@@ -6,21 +6,33 @@ export function AboutPage() {
     <InfoPageLayout
       route="about"
       title="About"
-      lede="An interactive atlas of hyperscaler cloud regions, energy portfolios, and compute profiles built from public disclosures and labeled estimates."
+      lede="A public-data explorer for hyperscaler commitments across cloud compute, AI infrastructure, power procurement, capex, and forward-looking energy demand."
     >
       <div className="prose-atlas space-y-8 text-[var(--text-secondary)]">
         <section>
           <h2 className="text-lg font-semibold text-[var(--text-primary)]">What this is</h2>
           <p className="mt-3 leading-relaxed">
-            Hyperscaler Atlas maps major cloud regions, AI campuses, storage hubs, and edge nodes on a
-            geographic world map. Select any site to inspect location, infrastructure scale, energy
-            source mix, compute workloads, and a modeled live power feed.
+            Hyperscaler Commitments Explorer finds, combines, and categorizes public hyperscaler
+            commitments from SEC filings, press releases, agency reports, and research trackers. Browse
+            the overview dashboard, interactive timeline, company comparison, forecast scenarios, and
+            spatial map in one product.
           </p>
           <p className="mt-3 leading-relaxed">
-            The map is a research and exploration tool. It combines sourced public data with clearly
-            labeled demo and modeled layers so you can compare scale, procurement patterns, and workload
-            types across providers.
+            Every record carries source URL, source type, and confidence level (direct, inferred,
+            estimated, or speculative). Click any timeline event to open a citation drawer with excerpts
+            and primary source links.
           </p>
+        </section>
+
+        <section>
+          <h2 className="text-lg font-semibold text-[var(--text-primary)]">Main views</h2>
+          <ul className="mt-3 list-disc space-y-2 pl-5 leading-relaxed">
+            <li><strong className="text-[var(--text-primary)]">Overview</strong> totals, era breakdown, capex chart</li>
+            <li><strong className="text-[var(--text-primary)]">Timeline</strong> commitments by year with filters</li>
+            <li><strong className="text-[var(--text-primary)]">Map</strong> geographic infrastructure explorer</li>
+            <li><strong className="text-[var(--text-primary)]">Compare</strong> pre-AI vs AI-era company metrics</li>
+            <li><strong className="text-[var(--text-primary)]">Forecasts</strong> 2028-2030 scenario modeling</li>
+          </ul>
         </section>
 
         <section>

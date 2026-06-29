@@ -13,15 +13,15 @@ interface InfoPageLayoutProps {
 
 export function InfoPageLayout({ route, title, lede, children }: InfoPageLayoutProps) {
   return (
-    <div className="flex min-h-dvh flex-col overflow-y-auto bg-[var(--canvas-bg)]">
+    <div className="explorer-scroll flex min-h-dvh flex-col bg-[var(--canvas-bg)]">
       <header className="border-b border-[var(--border)] bg-[var(--surface)]/80 backdrop-blur-xl">
         <div className="mx-auto flex max-w-3xl flex-col gap-4 px-4 py-5 md:px-6 lg:px-8">
           <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
             <a
-              href={routeHref('map')}
+              href={routeHref('dashboard')}
               className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--accent)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)]"
             >
-              Hyperscaler Atlas
+              Hyperscaler Commitments Explorer
             </a>
             <SiteNav current={route} compact />
           </div>
