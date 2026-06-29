@@ -11,6 +11,7 @@ import { ZoomControls } from './components/controls/ZoomControls'
 import { Legend } from './components/controls/Legend'
 import { QuickJump } from './components/controls/QuickJump'
 import { BuilderCredit } from './components/layout/BuilderCredit'
+import { EnergyCommitmentsPanel } from './components/panels/EnergyCommitmentsPanel'
 import { EmptyState, LoadingState } from './components/ui/States'
 import type { SpatialNode } from './types'
 import { trackEvent } from './utils/analytics'
@@ -260,8 +261,9 @@ function App() {
 
           {/* Floating controls */}
           <div className="pointer-events-none absolute inset-0 flex flex-col justify-between p-3 md:p-4">
-            <div className="pointer-events-auto hidden md:block">
+            <div className="pointer-events-auto hidden max-w-xs flex-col gap-2 lg:flex">
               <QuickJump onJump={handleQuickJump} />
+              <EnergyCommitmentsPanel />
             </div>
 
             <div className="flex items-end justify-between gap-3">

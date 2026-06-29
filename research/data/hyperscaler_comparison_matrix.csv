@@ -24,3 +24,6 @@ Industry,current,global_dc_electricity_twh,415,2024,IEA,direct
 Hyperscaler cohort,pre_ai_boom,combined_capex_usd_b,149,2022,SEC aggregated,estimated
 Hyperscaler cohort,current,combined_capex_usd_b,355,2025,SEC aggregated,estimated
 Hyperscaler cohort,ai_boom,capex_cagr_percent,38,2022-2025,Model from SEC,estimated
+Microsoft,current,disclosed_energy_commitments_mw,13000,2024-2026,hyperscaler_commitments.csv,direct
+Brookfield,current,disclosed_energy_commitments_mw,1000,2024-2026,hyperscaler_commitments.csv,direct
+Google,current,disclosed_energy_commitments_mw,100,2024-2026,hyperscaler_commitments.csv,direct

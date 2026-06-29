@@ -155,12 +155,31 @@ See `research/data/hyperscaler_forecast_scenarios.csv`. All forward figures are 
 
 ---
 
-## 6. Charts & visual data
+## 6. Energy commitments dataset (incorporated)
+
+Source file: `research/data/hyperscaler_commitments.csv` (user-supplied, enriched with URLs and confidence).
+
+| Date | Company | Counterparty | Type | MW | Notes |
+|------|---------|--------------|------|-----|-------|
+| 2024-05 | **Microsoft** | Brookfield | Renewable | **10,500** | Largest disclosed corporate renewable framework (10.5 GW, 2026–2030) |
+| 2025-10 | Brookfield | Bloom Energy | Fuel cells | **1,000** | Supports Brookfield clean-power portfolio |
+| 2026-02 | **Google** | Fervo Energy | Geothermal | **100** | Utah enhanced geothermal |
+| 2026-04 | **Microsoft** | Chevron | Gas | **2,500** | 20-yr West Texas AI campus power |
+
+**Microsoft disclosed commitments in this file: 13,000 MW** (10.5 GW renewable + 2.5 GW gas).  
+Chart-ready: `hyperscaler_chart_commitments_mw.csv`
+
+These rows are merged into `hyperscaler_master_chronology.csv` when running `python3 research/generate_dataset.py`.
+
+---
+
+## 7. Charts & visual data
 
 Chart-ready CSVs (import to Excel/Tableau):
 - `hyperscaler_chart_capex.csv` — capex by company × year
 - `hyperscaler_chart_power_demand.csv` — US/global TWh
 - `hyperscaler_chart_energy_mix.csv` — estimated procurement mix by company (labeled **estimated**)
+- `hyperscaler_chart_commitments_mw.csv` — MW commitments by deal
 
 ---
 

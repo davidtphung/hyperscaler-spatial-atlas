@@ -18,6 +18,67 @@ def write_csv(name: str, rows: list[dict], fields: list[str]):
         w.writerows(rows)
     print(f"Wrote {path} ({len(rows)} rows)")
 
+
+COMMITMENT_FIELDS = [
+    "announcement_date", "company", "counterparty", "resource_type", "megawatts",
+    "geography", "era", "source_url", "source_type", "confidence", "notes",
+]
+
+
+def load_commitments() -> list[dict]:
+    path = OUT / "hyperscaler_commitments.csv"
+    with path.open(newline="", encoding="utf-8") as f:
+        return list(csv.DictReader(f))
+
+
+def commitments_to_chronology(rows: list[dict]) -> list[dict]:
+    category_map = {
+        "Renewable": "nuclear_renewables_ppa",
+        "Gas": "power_energy_commitments",
+        "Geothermal": "nuclear_renewables_ppa",
+        "Fuel cells": "power_energy_commitments",
+        "Nuclear": "nuclear_renewables_ppa",
+    }
+    out = []
+    for r in rows:
+        date = r["announcement_date"]
+        if len(date) == 7:
+            date = f"{date}-01"
+        out.append({
+            "company": r["company"],
+            "date": date,
+            "era": r["era"],
+            "event_or_metric": f"{r['resource_type']} commitment with {r['counterparty']}",
+            "category": category_map.get(r["resource_type"], "power_energy_commitments"),
+            "value": r["megawatts"],
+            "unit": "MW",
+            "geography": r["geography"],
+            "source_url": r["source_url"],
+            "source_type": r["source_type"],
+            "confidence": r["confidence"],
+        })
+    return out
+
+
+def commitments_comparison(rows: list[dict]) -> list[dict]:
+    by_company: dict[str, float] = {}
+    for r in rows:
+        co = r["company"]
+        by_company[co] = by_company.get(co, 0) + float(r["megawatts"])
+    return [
+        {
+            "company": co,
+            "era": "current",
+            "metric": "disclosed_energy_commitments_mw",
+            "value": str(int(mw)),
+            "year": "2024-2026",
+            "source": "hyperscaler_commitments.csv",
+            "confidence": "direct",
+        }
+        for co, mw in sorted(by_company.items(), key=lambda x: -x[1])
+    ]
+
+
 def main():
     chronology = [
         # AMAZON / AWS
@@ -188,6 +249,25 @@ def main():
         {"id": "WNN-TMI", "title": "Constellation Three Mile Island restart for Microsoft", "url": "https://www.world-nuclear-news.org/articles/constellation-to-restart-three-mile-island-unit-powering-microsoft", "type": "industry_news", "accessed": "2026-06-28"},
         {"id": "OPENAI-STARGATE", "title": "Announcing the Stargate Project", "url": "https://openai.com/index/announcing-the-stargate-project/", "type": "press_release", "accessed": "2026-06-28"},
         {"id": "META-NUCLEAR-RFP", "title": "Meta Nuclear Energy Projects", "url": "https://about.fb.com/news/2026/01/meta-nuclear-energy-projects-power-american-ai-leadership/", "type": "press_release", "accessed": "2026-06-28"},
+        {"id": "MSFT-BROOKFIELD", "title": "Brookfield Microsoft 10.5 GW Renewable Framework", "url": "https://bep.brookfield.com/press-releases/bep/brookfield-and-microsoft-collaborating-deliver-over-105-gw-new-renewable-power", "type": "press_release", "accessed": "2026-06-28"},
+        {"id": "MSFT-CHEVRON", "title": "Microsoft Chevron West Texas Power Deal (Fortune)", "url": "https://fortune.com/2026/04/01/microsoft-chevron-exclusivity-powering-west-texas-data-center-complex/", "type": "industry_news", "accessed": "2026-06-28"},
+        {"id": "COMMITMENTS-CSV", "title": "Hyperscaler Energy Commitments Dataset", "url": "research/data/hyperscaler_commitments.csv", "type": "user_supplied_dataset", "accessed": "2026-06-28"},
+    ]
+
+    commitments = load_commitments()
+    chronology.extend(commitments_to_chronology(commitments))
+    comparison.extend(commitments_comparison(commitments))
+
+    chart_commitments = [
+        {
+            "announcement_date": r["announcement_date"],
+            "company": r["company"],
+            "counterparty": r["counterparty"],
+            "resource_type": r["resource_type"],
+            "megawatts": float(r["megawatts"]),
+            "gigawatts": round(float(r["megawatts"]) / 1000, 2),
+        }
+        for r in commitments
     ]
 
     write_csv("hyperscaler_master_chronology.csv", chronology, CHRONOLOGY_FIELDS)
@@ -197,6 +277,8 @@ def main():
     write_csv("hyperscaler_chart_power_demand.csv", chart_power, list(chart_power[0].keys()))
     write_csv("hyperscaler_chart_energy_mix.csv", chart_energy_mix, list(chart_energy_mix[0].keys()))
     write_csv("hyperscaler_bibliography.csv", bibliography, list(bibliography[0].keys()))
+    write_csv("hyperscaler_commitments.csv", commitments, COMMITMENT_FIELDS)
+    write_csv("hyperscaler_chart_commitments_mw.csv", chart_commitments, list(chart_commitments[0].keys()))
 
 if __name__ == "__main__":
     main()

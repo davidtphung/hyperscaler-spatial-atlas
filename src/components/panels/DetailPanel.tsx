@@ -8,6 +8,7 @@ import { IconButton } from '../ui/IconButton'
 import { InfrastructureCharts } from './InfrastructureCharts'
 import { FleetComparisonChart } from './FleetComparisonChart'
 import { formatCoordinates, formatLocationAddress } from '../../utils/metrics'
+import { ProviderCommitments } from './ProviderCommitments'
 
 interface DetailPanelProps {
   node: SpatialNode | null
@@ -139,6 +140,7 @@ export function DetailPanel({
           </dl>
         </section>
 
+        <ProviderCommitments provider={node.provider} />
         <InfrastructureCharts node={node} />
         <FleetComparisonChart node={node} />
 

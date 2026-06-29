@@ -57,3 +57,7 @@ Apple,2020-07-21,pre_ai_boom,Commitment to be 100% carbon neutral for supply cha
 Industry,2023-00-00,ai_boom,US data center electricity consumption,power_energy_commitments,176,TWh_per_year,USA,https://eta.lbl.gov/publications/united-states-data-centers-energy,government_lab_lbnl,direct
 Industry,2024-00-00,current,Global data centre electricity demand (IEA estimate),power_energy_commitments,415,TWh_per_year,Global,https://www.iea.org/reports/energy-and-ai,iea_report,direct
 Industry,2030-00-00,forward_looking,Global data centre electricity demand (IEA base projection),power_energy_commitments,945,TWh_per_year,Global,https://www.iea.org/reports/energy-and-ai,iea_report,estimated
+Microsoft,2024-05-01,ai_boom,Renewable commitment with Brookfield,nuclear_renewables_ppa,10500,MW,USA and Europe (framework global),https://bep.brookfield.com/press-releases/bep/brookfield-and-microsoft-collaborating-deliver-over-105-gw-new-renewable-power,press_release,direct
+Brookfield,2025-10-01,ai_boom,Fuel cells commitment with Bloom Energy,power_energy_commitments,1000,MW,USA,https://www.bloomenergy.com/,company_website,inferred
+Google,2026-02-01,current,Geothermal commitment with Fervo Energy,nuclear_renewables_ppa,100,MW,Utah USA,https://blog.google/outreach-initiatives/sustainability/,company_blog,direct
+Microsoft,2026-04-01,current,Gas commitment with Chevron,power_energy_commitments,2500,MW,West Texas USA,https://fortune.com/2026/04/01/microsoft-chevron-exclusivity-powering-west-texas-data-center-complex/,industry_news,direct

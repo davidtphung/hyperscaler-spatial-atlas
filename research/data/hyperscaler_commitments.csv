@@ -1,0 +1,5 @@
+announcement_date,company,counterparty,resource_type,megawatts,geography,era,source_url,source_type,confidence,notes
+2024-05,Microsoft,Brookfield,Renewable,10500,USA and Europe (framework global),ai_boom,https://bep.brookfield.com/press-releases/bep/brookfield-and-microsoft-collaborating-deliver-over-105-gw-new-renewable-power,press_release,direct,Framework to deliver 10.5 GW new renewable capacity 2026-2030; largest corporate PPA framework disclosed
+2025-10,Brookfield,Bloom Energy,Fuel cells,1000,USA,ai_boom,https://www.bloomenergy.com/,company_website,inferred,Bloom-Brookfield fuel cell partnership; supports Brookfield-managed clean power portfolio incl. Microsoft framework regions
+2026-02,Google,Fervo Energy,Geothermal,100,Utah USA,current,https://blog.google/outreach-initiatives/sustainability/,company_blog,direct,Fervo Energy Utah enhanced geothermal project for Google data center load
+2026-04,Microsoft,Chevron,Gas,2500,West Texas USA,current,https://fortune.com/2026/04/01/microsoft-chevron-exclusivity-powering-west-texas-data-center-complex/,industry_news,direct,20-year power agreement; Fortune reports exclusivity for West Texas AI data center complex

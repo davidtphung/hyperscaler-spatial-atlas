@@ -14,3 +14,6 @@ TALEN-AWS,Talen Energy Amazon Nuclear Expansion,https://ir.talenenergy.com/news-
 WNN-TMI,Constellation Three Mile Island restart for Microsoft,https://www.world-nuclear-news.org/articles/constellation-to-restart-three-mile-island-unit-powering-microsoft,industry_news,2026-06-28
 OPENAI-STARGATE,Announcing the Stargate Project,https://openai.com/index/announcing-the-stargate-project/,press_release,2026-06-28
 META-NUCLEAR-RFP,Meta Nuclear Energy Projects,https://about.fb.com/news/2026/01/meta-nuclear-energy-projects-power-american-ai-leadership/,press_release,2026-06-28
+MSFT-BROOKFIELD,Brookfield Microsoft 10.5 GW Renewable Framework,https://bep.brookfield.com/press-releases/bep/brookfield-and-microsoft-collaborating-deliver-over-105-gw-new-renewable-power,press_release,2026-06-28
+MSFT-CHEVRON,Microsoft Chevron West Texas Power Deal (Fortune),https://fortune.com/2026/04/01/microsoft-chevron-exclusivity-powering-west-texas-data-center-complex/,industry_news,2026-06-28
+COMMITMENTS-CSV,Hyperscaler Energy Commitments Dataset,research/data/hyperscaler_commitments.csv,user_supplied_dataset,2026-06-28
