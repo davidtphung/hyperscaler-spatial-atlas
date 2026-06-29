@@ -1,6 +1,7 @@
 import { SearchBar } from '../controls/SearchBar'
 import { CategoryToggles } from '../controls/CategoryToggles'
 import { ViewModeToggle } from '../controls/ViewModeToggle'
+import { SiteNav } from './SiteNav'
 import type { MapViewMode, NodeCategory } from '../../types'
 import { formatPower } from '../../utils/metrics'
 import type { LivePowerSnapshot } from '../../types'
@@ -53,6 +54,7 @@ export function Header({
           </div>
 
           <div className="flex flex-wrap items-center gap-3">
+            <SiteNav current="map" compact />
             <ViewModeToggle mode={viewMode} onChange={onViewModeChange} />
             <div
               className="hidden items-center gap-2 rounded-xl border border-[var(--border)] bg-[var(--surface)]/50 px-3 py-2 sm:flex"

@@ -3,7 +3,7 @@ import type { SpatialNode } from '../types'
 export const SPATIAL_NODES: SpatialNode[] = [
   {
     id: 'us-east-1',
-    name: 'US East — Virginia Hub',
+    name: 'US East · Virginia Hub',
     region: 'Northern Virginia, USA',
     provider: 'AWS',
     category: 'compute',
@@ -23,7 +23,7 @@ export const SPATIAL_NODES: SpatialNode[] = [
   },
   {
     id: 'us-west-2',
-    name: 'US West — Oregon Core',
+    name: 'US West · Oregon Core',
     region: 'Boardman, Oregon, USA',
     provider: 'AWS',
     category: 'storage',
@@ -43,7 +43,7 @@ export const SPATIAL_NODES: SpatialNode[] = [
   },
   {
     id: 'eu-west-1',
-    name: 'EU West — Dublin Gateway',
+    name: 'EU West · Dublin Gateway',
     region: 'Dublin, Ireland',
     provider: 'AWS',
     category: 'network',
@@ -63,7 +63,7 @@ export const SPATIAL_NODES: SpatialNode[] = [
   },
   {
     id: 'eu-central-1',
-    name: 'EU Central — Frankfurt',
+    name: 'EU Central · Frankfurt',
     region: 'Frankfurt, Germany',
     provider: 'AWS',
     category: 'compute',
@@ -83,7 +83,7 @@ export const SPATIAL_NODES: SpatialNode[] = [
   },
   {
     id: 'ap-northeast-1',
-    name: 'AP Northeast — Tokyo',
+    name: 'AP Northeast · Tokyo',
     region: 'Tokyo, Japan',
     provider: 'AWS',
     category: 'ai',
@@ -103,7 +103,7 @@ export const SPATIAL_NODES: SpatialNode[] = [
   },
   {
     id: 'ap-southeast-1',
-    name: 'AP Southeast — Singapore',
+    name: 'AP Southeast · Singapore',
     region: 'Singapore',
     provider: 'GCP',
     category: 'compute',
@@ -123,7 +123,7 @@ export const SPATIAL_NODES: SpatialNode[] = [
   },
   {
     id: 'us-central-azure',
-    name: 'Azure Central — Iowa',
+    name: 'Azure Central · Iowa',
     region: 'Des Moines, Iowa, USA',
     provider: 'Azure',
     category: 'compute',
@@ -143,7 +143,7 @@ export const SPATIAL_NODES: SpatialNode[] = [
   },
   {
     id: 'uk-south',
-    name: 'UK South — London',
+    name: 'UK South · London',
     region: 'London, UK',
     provider: 'Azure',
     category: 'network',
@@ -183,7 +183,7 @@ export const SPATIAL_NODES: SpatialNode[] = [
   },
   {
     id: 'ai-us-west',
-    name: 'AI West — Nevada Training',
+    name: 'AI West · Nevada Training',
     region: 'Las Vegas, Nevada, USA',
     provider: 'CoreWeave',
     category: 'ai',
@@ -203,7 +203,7 @@ export const SPATIAL_NODES: SpatialNode[] = [
   },
   {
     id: 'sa-east-1',
-    name: 'SA East — São Paulo',
+    name: 'SA East · São Paulo',
     region: 'São Paulo, Brazil',
     provider: 'AWS',
     category: 'compute',
@@ -223,7 +223,7 @@ export const SPATIAL_NODES: SpatialNode[] = [
   },
   {
     id: 'ap-south-1',
-    name: 'AP South — Mumbai',
+    name: 'AP South · Mumbai',
     region: 'Mumbai, India',
     provider: 'AWS',
     category: 'edge',
@@ -243,7 +243,7 @@ export const SPATIAL_NODES: SpatialNode[] = [
   },
   {
     id: 'me-south-1',
-    name: 'ME South — Bahrain',
+    name: 'ME South · Bahrain',
     region: 'Manama, Bahrain',
     provider: 'AWS',
     category: 'network',
@@ -263,7 +263,7 @@ export const SPATIAL_NODES: SpatialNode[] = [
   },
   {
     id: 'af-south-1',
-    name: 'AF South — Cape Town',
+    name: 'AF South · Cape Town',
     region: 'Cape Town, South Africa',
     provider: 'AWS',
     category: 'storage',
@@ -283,7 +283,7 @@ export const SPATIAL_NODES: SpatialNode[] = [
   },
   {
     id: 'eu-north-1',
-    name: 'EU North — Stockholm',
+    name: 'EU North · Stockholm',
     region: 'Stockholm, Sweden',
     provider: 'AWS',
     category: 'storage',
@@ -303,7 +303,7 @@ export const SPATIAL_NODES: SpatialNode[] = [
   },
   {
     id: 'edge-iad',
-    name: 'Edge — Dulles POP',
+    name: 'Edge · Dulles POP',
     region: 'Dulles, Virginia, USA',
     provider: 'Meta',
     category: 'edge',
@@ -323,7 +323,7 @@ export const SPATIAL_NODES: SpatialNode[] = [
   },
   {
     id: 'oracle-phoenix',
-    name: 'Oracle Cloud — Phoenix',
+    name: 'Oracle Cloud · Phoenix',
     region: 'Phoenix, Arizona, USA',
     provider: 'Oracle',
     category: 'compute',
@@ -343,7 +343,7 @@ export const SPATIAL_NODES: SpatialNode[] = [
   },
   {
     id: 'meta-lulea',
-    name: 'Meta Luleå — Arctic DC',
+    name: 'Meta Luleå · Arctic DC',
     region: 'Luleå, Sweden',
     provider: 'Meta',
     category: 'storage',
@@ -363,7 +363,7 @@ export const SPATIAL_NODES: SpatialNode[] = [
   },
   {
     id: 'ap-northeast-2',
-    name: 'AP Northeast — Seoul',
+    name: 'AP Northeast · Seoul',
     region: 'Seoul, South Korea',
     provider: 'GCP',
     category: 'edge',
@@ -383,7 +383,7 @@ export const SPATIAL_NODES: SpatialNode[] = [
   },
   {
     id: 'us-east-2',
-    name: 'US East — Ohio',
+    name: 'US East · Ohio',
     region: 'Columbus, Ohio, USA',
     provider: 'AWS',
     category: 'compute',

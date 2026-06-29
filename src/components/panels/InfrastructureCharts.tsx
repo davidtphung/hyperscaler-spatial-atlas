@@ -90,19 +90,19 @@ export function InfrastructureCharts({ node }: InfrastructureChartsProps) {
         <div>
           <dt className="text-[9px] font-semibold uppercase tracking-wider text-[var(--text-tertiary)]">Buildings</dt>
           <dd className="mt-0.5 font-mono text-sm text-[var(--text-primary)]">
-            {node.infrastructure.buildings || '—'}
+            {node.infrastructure.buildings || 'n/a'}
           </dd>
         </div>
         <div>
           <dt className="text-[9px] font-semibold uppercase tracking-wider text-[var(--text-tertiary)]">MW / acre</dt>
           <dd className="mt-0.5 font-mono text-sm text-[var(--text-primary)]">
-            {landAcres > 0 && powerMW > 0 ? (powerMW / landAcres).toFixed(1) : '—'}
+            {landAcres > 0 && powerMW > 0 ? (powerMW / landAcres).toFixed(1) : 'n/a'}
           </dd>
         </div>
         <div>
           <dt className="text-[9px] font-semibold uppercase tracking-wider text-[var(--text-tertiary)]">GPUs / MW</dt>
           <dd className="mt-0.5 font-mono text-sm text-[var(--text-primary)]">
-            {powerMW > 0 && gpuCount > 0 ? Math.round(gpuCount / powerMW) : '—'}
+            {powerMW > 0 && gpuCount > 0 ? Math.round(gpuCount / powerMW) : 'n/a'}
           </dd>
         </div>
       </dl>

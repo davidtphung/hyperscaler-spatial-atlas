@@ -39,7 +39,7 @@ export function FleetComparisonChart({ node }: FleetComparisonChartProps) {
         Fleet comparison
       </h3>
       <p className="mt-1 text-xs text-[var(--text-tertiary)]">
-        Top sites by power — highlighted row is selected
+        Top sites by power. Highlighted row is selected.
       </p>
 
       <div className="mt-3 overflow-x-auto">
@@ -74,7 +74,7 @@ export function FleetComparisonChart({ node }: FleetComparisonChartProps) {
                           : 'text-[var(--text-secondary)]'
                       }
                     >
-                      {site.name.split('—')[0].trim()}
+                      {site.name.split(' · ')[0]?.trim() ?? site.name}
                     </span>
                   </td>
                   {CHART_METRICS.map((m) => {

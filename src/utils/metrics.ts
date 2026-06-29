@@ -2,12 +2,12 @@ import type { SpatialNode } from '../types'
 
 export function formatPower(mw: number): string {
   if (mw >= 1000) return `${(mw / 1000).toFixed(1)} GW`
-  if (mw === 0) return '—'
+  if (mw === 0) return 'n/a'
   return `${mw.toLocaleString()} MW`
 }
 
 export function formatWatts(mw: number): string {
-  if (mw === 0) return '—'
+  if (mw === 0) return 'n/a'
   const watts = mw * 1_000_000
   if (watts >= 1_000_000_000) return `${(watts / 1_000_000_000).toFixed(2)}B W`
   if (watts >= 1_000_000) return `${(watts / 1_000_000).toFixed(0)}M W`
@@ -15,12 +15,12 @@ export function formatWatts(mw: number): string {
 }
 
 export function formatAcres(acres: number): string {
-  if (acres === 0) return '—'
+  if (acres === 0) return 'n/a'
   return `${acres.toLocaleString()} ac`
 }
 
 export function formatGpus(count: number): string {
-  if (count === 0) return '—'
+  if (count === 0) return 'n/a'
   if (count >= 1000) return `${(count / 1000).toFixed(1)}k GPUs`
   return `${count.toLocaleString()} GPUs`
 }
