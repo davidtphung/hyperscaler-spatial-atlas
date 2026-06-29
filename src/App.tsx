@@ -10,6 +10,7 @@ import { DetailPanel } from './components/panels/DetailPanel'
 import { ZoomControls } from './components/controls/ZoomControls'
 import { Legend } from './components/controls/Legend'
 import { QuickJump } from './components/controls/QuickJump'
+import { BuilderCredit } from './components/layout/BuilderCredit'
 import { EmptyState, LoadingState } from './components/ui/States'
 import type { SpatialNode } from './types'
 import { trackEvent } from './utils/analytics'
@@ -264,8 +265,11 @@ function App() {
             </div>
 
             <div className="flex items-end justify-between gap-3">
-              <div className="pointer-events-auto hidden md:block">
-                <Legend />
+              <div className="pointer-events-auto flex flex-col gap-2">
+                <div className="hidden md:block">
+                  <Legend />
+                </div>
+                <BuilderCredit />
               </div>
               <div className="pointer-events-auto ml-auto">
                 <ZoomControls
