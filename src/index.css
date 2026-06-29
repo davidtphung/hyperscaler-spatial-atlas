@@ -1,20 +1,25 @@
 @import "tailwindcss";
 
 :root {
-  --canvas-bg: #07080c;
-  --surface: #111318;
-  --border: rgba(255, 255, 255, 0.08);
-  --text-primary: #f1f3f7;
-  --text-secondary: #9ca3b0;
-  --text-tertiary: #5c6370;
+  --canvas-bg: #0c1018;
+  --ocean-fill: #0a1628;
+  --surface: #141a24;
+  --border: rgba(255, 255, 255, 0.12);
+  --text-primary: #f8fafc;
+  --text-secondary: #b8c0cc;
+  --text-tertiary: #7a8494;
   --accent: #3dd6c6;
   --accent-secondary: #7c8cff;
-  --grid-line: rgba(255, 255, 255, 0.04);
-  --grid-dot: rgba(255, 255, 255, 0.06);
-  --land-fill: rgba(61, 214, 198, 0.03);
-  --land-stroke: rgba(61, 214, 198, 0.08);
-  --connection-line: rgba(124, 140, 255, 0.3);
-  --glow: rgba(61, 214, 198, 0.15);
+  --grid-line: rgba(255, 255, 255, 0.06);
+  --graticule-line: rgba(255, 255, 255, 0.1);
+  --map-border: rgba(255, 255, 255, 0.15);
+  --map-label: #94a3b8;
+  --land-fill: #1a2838;
+  --land-stroke: #2d4a62;
+  --marker-fill: #0f1a28;
+  --label-bg: #141e2e;
+  --connection-line: rgba(124, 180, 255, 0.5);
+  --glow: rgba(61, 214, 198, 0.2);
 }
 
 @theme {

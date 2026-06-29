@@ -103,7 +103,7 @@ export function DetailPanel({
       </header>
 
       <div className="flex-1 overflow-y-auto px-5 py-4">
-        <p className="text-sm leading-relaxed text-[var(--text-secondary)]">{node.summary}</p>
+        <p className="text-base leading-relaxed text-[var(--text-secondary)]">{node.summary}</p>
 
         <dl className="mt-6 grid grid-cols-2 gap-4">
           {[

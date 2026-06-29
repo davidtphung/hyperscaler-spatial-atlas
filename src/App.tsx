@@ -14,7 +14,7 @@ import { EmptyState, LoadingState } from './components/ui/States'
 import type { SpatialNode } from './types'
 import { trackEvent } from './utils/analytics'
 import { announce } from './utils/a11y'
-import { fitAllNodes } from './utils/spatial'
+import { fitWorldMap } from './utils/spatial'
 
 function App() {
   const isMobile = useIsMobile()
@@ -64,7 +64,7 @@ function App() {
   useEffect(() => {
     const t = setTimeout(() => {
       setLoading(false)
-      setViewport(fitAllNodes(filteredNodes, canvasSize.width, canvasSize.height))
+      setViewport(fitWorldMap(canvasSize.width, canvasSize.height))
     }, 400)
     return () => clearTimeout(t)
   }, []) // eslint-disable-line react-hooks/exhaustive-deps

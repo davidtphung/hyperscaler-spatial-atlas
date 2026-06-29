@@ -1,6 +1,5 @@
 import type { SpatialNode } from '../types'
 
-// x/y are normalized map coordinates (0–100) derived from lng/lat
 export const SPATIAL_NODES: SpatialNode[] = [
   {
     id: 'us-east-1',
@@ -9,8 +8,8 @@ export const SPATIAL_NODES: SpatialNode[] = [
     provider: 'AWS',
     category: 'compute',
     status: 'operational',
-    x: 22,
-    y: 38,
+    lat: 38.9,
+    lng: -77.5,
     summary:
       'Primary hyperscale compute corridor serving eastern North America with multi-AZ redundancy and sub-2ms intra-region mesh.',
     capacity: '4.2 GW equivalent',
@@ -27,8 +26,8 @@ export const SPATIAL_NODES: SpatialNode[] = [
     provider: 'AWS',
     category: 'storage',
     status: 'expanding',
-    x: 12,
-    y: 32,
+    lat: 45.8,
+    lng: -119.7,
     summary:
       'Renewable-powered storage backbone with hydro-backed PUE of 1.15 and expanding S3/Glacier capacity.',
     capacity: '890 PB active',
@@ -45,8 +44,8 @@ export const SPATIAL_NODES: SpatialNode[] = [
     provider: 'AWS',
     category: 'network',
     status: 'operational',
-    x: 44,
-    y: 28,
+    lat: 53.3,
+    lng: -6.3,
     summary:
       'Transatlantic network gateway with 14 Tbps backbone capacity and GDPR-compliant data residency.',
     capacity: '14 Tbps transit',
@@ -63,8 +62,8 @@ export const SPATIAL_NODES: SpatialNode[] = [
     provider: 'AWS',
     category: 'compute',
     status: 'operational',
-    x: 50,
-    y: 30,
+    lat: 50.1,
+    lng: 8.7,
     summary:
       'Central European compute hub with sovereign cloud options and direct fiber to financial districts.',
     capacity: '2.8 GW equivalent',
@@ -81,8 +80,8 @@ export const SPATIAL_NODES: SpatialNode[] = [
     provider: 'AWS',
     category: 'ai',
     status: 'expanding',
-    x: 82,
-    y: 36,
+    lat: 35.7,
+    lng: 139.7,
     summary:
       'Asia-Pacific AI training zone with H100 clusters and earthquake-resilient facility design.',
     capacity: '42k GPU-hours/day',
@@ -99,8 +98,8 @@ export const SPATIAL_NODES: SpatialNode[] = [
     provider: 'GCP',
     category: 'compute',
     status: 'operational',
-    x: 74,
-    y: 52,
+    lat: 1.3,
+    lng: 103.8,
     summary:
       'Southeast Asia launch region with submarine cable landing and sovereign data controls.',
     capacity: '1.6 GW equivalent',
@@ -117,8 +116,8 @@ export const SPATIAL_NODES: SpatialNode[] = [
     provider: 'Azure',
     category: 'compute',
     status: 'operational',
-    x: 20,
-    y: 34,
+    lat: 41.6,
+    lng: -93.6,
     summary:
       'Midwest compute fabric with wind-backed power purchase agreements and low-latency central US reach.',
     capacity: '2.1 GW equivalent',
@@ -135,8 +134,8 @@ export const SPATIAL_NODES: SpatialNode[] = [
     provider: 'Azure',
     category: 'network',
     status: 'operational',
-    x: 47,
-    y: 27,
+    lat: 51.5,
+    lng: -0.1,
     summary:
       'Financial services network hub with cross-connect to LINX and sub-3ms latency to City of London.',
     capacity: '8.4 Tbps transit',
@@ -153,8 +152,8 @@ export const SPATIAL_NODES: SpatialNode[] = [
     provider: 'GCP',
     category: 'ai',
     status: 'expanding',
-    x: 18,
-    y: 35,
+    lat: 41.2,
+    lng: -95.9,
     summary:
       'Tensor Processing Unit and T4/V100 legacy clusters with expanding Gemini inference capacity.',
     capacity: '28k TPU chip-hours/day',
@@ -171,8 +170,8 @@ export const SPATIAL_NODES: SpatialNode[] = [
     provider: 'CoreWeave',
     category: 'ai',
     status: 'operational',
-    x: 14,
-    y: 40,
+    lat: 36.2,
+    lng: -115.1,
     summary:
       'Dedicated GPU cloud with liquid-cooled H100/H200 racks and 400 Gbps intra-rack fabric.',
     capacity: '64k GPU-hours/day',
@@ -189,8 +188,8 @@ export const SPATIAL_NODES: SpatialNode[] = [
     provider: 'AWS',
     category: 'compute',
     status: 'operational',
-    x: 30,
-    y: 68,
+    lat: -23.5,
+    lng: -46.6,
     summary:
       'Latin America anchor region with Portuguese/Spanish localization and Itaipu hydro proximity.',
     capacity: '980 MW equivalent',
@@ -207,8 +206,8 @@ export const SPATIAL_NODES: SpatialNode[] = [
     provider: 'AWS',
     category: 'edge',
     status: 'expanding',
-    x: 68,
-    y: 46,
+    lat: 19.1,
+    lng: 72.9,
     summary:
       'South Asia edge expansion with 5G MEC partnerships and sub-10ms metro coverage.',
     capacity: '420 edge PoPs',
@@ -225,8 +224,8 @@ export const SPATIAL_NODES: SpatialNode[] = [
     provider: 'AWS',
     category: 'network',
     status: 'operational',
-    x: 58,
-    y: 44,
+    lat: 26.0,
+    lng: 50.6,
     summary:
       'Middle East network gateway linking Europe, Africa, and Asia with submarine cable diversity.',
     capacity: '3.2 Tbps transit',
@@ -243,8 +242,8 @@ export const SPATIAL_NODES: SpatialNode[] = [
     provider: 'AWS',
     category: 'storage',
     status: 'planned',
-    x: 52,
-    y: 72,
+    lat: -33.9,
+    lng: 18.4,
     summary:
       'Planned African storage region with solar-backed design and cross-continental replication.',
     capacity: 'Planned 200 PB',
@@ -261,8 +260,8 @@ export const SPATIAL_NODES: SpatialNode[] = [
     provider: 'AWS',
     category: 'storage',
     status: 'operational',
-    x: 52,
-    y: 22,
+    lat: 59.3,
+    lng: 18.1,
     summary:
       'Nordic cold-climate storage with free-air cooling and 100% renewable energy certificate.',
     capacity: '1.2 EB archival',
@@ -279,8 +278,8 @@ export const SPATIAL_NODES: SpatialNode[] = [
     provider: 'Meta',
     category: 'edge',
     status: 'operational',
-    x: 23,
-    y: 37,
+    lat: 38.95,
+    lng: -77.45,
     summary:
       'Social graph edge cache with real-time content delivery and 200 Gbps peering capacity.',
     capacity: '1.8 Tbps CDN',
@@ -297,8 +296,8 @@ export const SPATIAL_NODES: SpatialNode[] = [
     provider: 'Oracle',
     category: 'compute',
     status: 'maintenance',
-    x: 15,
-    y: 42,
+    lat: 33.4,
+    lng: -112.1,
     summary:
       'Enterprise database cloud with scheduled fabric upgrade; read replicas remain available.',
     capacity: '1.4 GW equivalent',
@@ -315,8 +314,8 @@ export const SPATIAL_NODES: SpatialNode[] = [
     provider: 'Meta',
     category: 'storage',
     status: 'operational',
-    x: 54,
-    y: 18,
+    lat: 65.6,
+    lng: 22.2,
     summary:
       'Arctic-circle data hall with natural cooling and AI training cold-storage tier.',
     capacity: '640 PB active',
@@ -333,8 +332,8 @@ export const SPATIAL_NODES: SpatialNode[] = [
     provider: 'GCP',
     category: 'edge',
     status: 'operational',
-    x: 80,
-    y: 35,
+    lat: 37.5,
+    lng: 127.0,
     summary:
       'Ultra-low-latency edge for gaming and fintech with 5G core integration.',
     capacity: '280 edge PoPs',
@@ -351,8 +350,8 @@ export const SPATIAL_NODES: SpatialNode[] = [
     provider: 'AWS',
     category: 'compute',
     status: 'operational',
-    x: 24,
-    y: 36,
+    lat: 39.96,
+    lng: -83.0,
     summary:
       'Secondary eastern compute zone with disaster recovery pairing to us-east-1.',
     capacity: '1.8 GW equivalent',

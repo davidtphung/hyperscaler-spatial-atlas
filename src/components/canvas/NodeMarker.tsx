@@ -30,12 +30,14 @@ export function NodeMarker({
   const category = CATEGORY_META[node.category]
   const status = STATUS_META[node.status]
   const active = isSelected || isHovered
-  const radius = active ? 7 : 5
+  const radius = active ? 8 : 6
+  const label = node.name.length > 32 ? node.name.slice(0, 30) + '…' : node.name
+  const labelWidth = Math.max(label.length * 6.5 + 16, 80)
 
   return (
     <g
       transform={`translate(${x}, ${y})`}
-      className={clsx('cursor-pointer', isDimmed && 'opacity-30')}
+      className={clsx('cursor-pointer', isDimmed && 'opacity-35')}
       role="button"
       tabIndex={tabIndex}
       aria-label={`${node.name}, ${node.provider}, ${status.label}`}
@@ -52,64 +54,59 @@ export function NodeMarker({
       onFocus={() => onHover(node)}
       onBlur={() => onHover(null)}
     >
-      {/* Glow */}
       {active && (
         <circle
-          r={radius + 8}
+          r={radius + 10}
           fill={category.color}
-          opacity={0.15}
+          opacity={0.2}
           className={clsx(!reducedMotion && 'animate-pulse-soft')}
         />
       )}
 
-      {/* Pulse ring for expanding/maintenance */}
       {(node.status === 'expanding' || node.status === 'maintenance') && !reducedMotion && (
         <circle
-          r={radius + 4}
+          r={radius + 5}
           fill="none"
           stroke={status.color}
-          strokeWidth={1}
-          opacity={0.5}
+          strokeWidth={1.5}
+          opacity={0.6}
           className="animate-ping-slow"
         />
       )}
 
-      {/* Outer ring */}
       <circle
         r={radius}
-        fill="var(--canvas-bg)"
+        fill="var(--marker-fill)"
         stroke={category.color}
-        strokeWidth={isSelected ? 2.5 : 1.5}
+        strokeWidth={isSelected ? 3 : 2}
         strokeDasharray={node.status === 'planned' ? '3 2' : undefined}
-        opacity={node.status === 'planned' ? 0.6 : 1}
+        opacity={node.status === 'planned' ? 0.7 : 1}
       />
 
-      {/* Core dot */}
-      <circle r={2.5} fill={category.color} />
+      <circle r={3} fill={category.color} stroke="var(--marker-fill)" strokeWidth={1} />
 
-      {/* Label on hover/select */}
       {active && (
-        <g transform="translate(0, -18)">
+        <g transform="translate(0, -22)">
           <rect
-            x={-node.name.length * 3.2}
-            y={-12}
-            width={node.name.length * 6.4}
-            height={18}
-            rx={4}
-            fill="var(--surface)"
-            stroke="var(--border)"
-            strokeWidth={0.5}
-            opacity={0.95}
+            x={-labelWidth / 2}
+            y={-14}
+            width={labelWidth}
+            height={22}
+            rx={5}
+            fill="var(--label-bg)"
+            stroke={category.color}
+            strokeWidth={1}
+            opacity={0.98}
           />
           <text
             textAnchor="middle"
-            y={0}
+            y={2}
             fill="var(--text-primary)"
-            fontSize={10}
+            fontSize={11}
             fontFamily="Inter, system-ui, sans-serif"
-            fontWeight={500}
+            fontWeight={600}
           >
-            {node.name.length > 28 ? node.name.slice(0, 26) + '…' : node.name}
+            {label}
           </text>
         </g>
       )}

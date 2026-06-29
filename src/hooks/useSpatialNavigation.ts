@@ -3,7 +3,7 @@ import type { ViewportState } from '../types'
 import {
   clampScale,
   DEFAULT_VIEWPORT,
-  fitAllNodes,
+  fitWorldMap,
   focusOnNode,
 } from '../utils/spatial'
 import type { SpatialNode } from '../types'
@@ -18,7 +18,6 @@ interface UseSpatialNavigationOptions {
 export function useSpatialNavigation({
   canvasWidth,
   canvasHeight,
-  nodes,
 }: UseSpatialNavigationOptions) {
   const [viewport, setViewport] = useState<ViewportState>(DEFAULT_VIEWPORT)
   const dragRef = useRef<{ startX: number; startY: number; origX: number; origY: number } | null>(null)
@@ -50,10 +49,10 @@ export function useSpatialNavigation({
   }, [])
 
   const resetView = useCallback(() => {
-    const next = fitAllNodes(nodes, canvasWidth, canvasHeight)
+    const next = fitWorldMap(canvasWidth, canvasHeight)
     setViewport(next)
     trackEvent({ type: 'reset_view' })
-  }, [nodes, canvasWidth, canvasHeight])
+  }, [canvasWidth, canvasHeight])
 
   const focusNode = useCallback(
     (node: SpatialNode) => {

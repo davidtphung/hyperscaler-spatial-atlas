@@ -38,8 +38,8 @@ export function Header({
             <h1 className="mt-1 text-2xl font-semibold tracking-tight text-[var(--text-primary)] md:text-3xl lg:text-4xl">
               Hyperscaler Atlas
             </h1>
-            <p className="mt-1 max-w-lg text-sm text-[var(--text-secondary)]">
-              Explore cloud regions, data centers, and network hubs across the global spatial field.
+            <p className="mt-1 max-w-lg text-base leading-relaxed text-[var(--text-secondary)]">
+              Explore cloud regions, data centers, and network hubs on a real world map.
             </p>
           </div>
 

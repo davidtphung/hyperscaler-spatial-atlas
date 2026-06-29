@@ -9,8 +9,8 @@ export interface SpatialNode {
   provider: string
   category: NodeCategory
   status: NodeStatus
-  x: number
-  y: number
+  lat: number
+  lng: number
   summary: string
   capacity: string
   latency: string
