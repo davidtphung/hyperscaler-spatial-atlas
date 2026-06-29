@@ -1,56 +1,47 @@
-# ~ (Home Directory) Git Repository
+# Hyperscaler Atlas
 
-This is a **selective dotfiles and configuration tracker** for the macOS home directory.
+An immersive, accessible spatial explorer of global cloud infrastructure — combining map-style pan/zoom navigation with editorial typography and data-rich detail panels.
 
-## Why a git repo at $HOME?
+**Live site:** [https://davidtphung.github.io/hyperscaler-spatial-atlas/](https://davidtphung.github.io/hyperscaler-spatial-atlas/)
 
-- Convenient for versioning shell configs, git settings, and AI/agent tool preferences.
-- **NOT** intended as a general project or backup repo.
+## Features
 
-## Safety First
+- Interactive spatial canvas with pan, zoom, hover, and click/tap on infrastructure nodes
+- Search, category filters, quick-jump navigation, and deep-linkable detail panels
+- Responsive layout: persistent sidebar (desktop), bottom sheet (mobile)
+- Full keyboard and screen reader support with reduced-motion respect
+- Sample dataset of 20 global hyperscaler regions across AWS, Azure, GCP, Oracle, Meta, and CoreWeave
 
-A comprehensive [.gitignore](.gitignore) is in place that:
-
-- Ignores **everything** by default (`*`)
-- Explicitly allows only a few small, safe config **files**
-- Blacklists user data directories (Pictures, Music, Documents, Downloads, Library, Applications, Projects, etc.)
-- Blacklists caches, histories, media files, and binaries
-- Prevents accidental `git add .` disasters that would bloat the repo with GBs of photos, music, node_modules, etc.
-
-## How to track additional files
+## Development
 
 ```bash
-# Force-add specific files you want versioned (bypasses the broad *)
-git add -f .zshrc .gitconfig .claude.json
-
-# Check what will be committed
-git status
-
-git commit -m "chore: track zsh and claude config"
+npm install
+npm run dev
 ```
 
-## Recommended files to consider tracking
+Open [http://localhost:5173](http://localhost:5173).
 
-- Shell: `.zshrc`, `.profile`
-- Git: `.gitconfig`
-- AI tools: `.claude.json` (sanitized)
-- Editor: specific small settings files only
+## Build
 
-## Important Notes
+```bash
+npm run build        # local preview build
+npm run build:pages  # GitHub Pages build (base path set)
+```
 
-- **Never** `git add .` or `git add *` at this level.
-- Review `git status` and `git diff --cached` carefully before every commit.
-- Private keys, tokens, large workspaces, and personal data are excluded by design.
-- For more advanced dotfiles management, consider tools like [chezmoi](https://www.chezmoi.io/), [yadm](https://yadm.io/), or a bare-repo + worktree pattern.
+## Keyboard shortcuts
 
-## GitHub
+| Key | Action |
+|-----|--------|
+| `/` | Focus search |
+| `↑↓←→` | Pan map |
+| `+` / `-` | Zoom in/out |
+| `0` | Reset view |
+| `Esc` | Close detail panel |
+| `Tab` | Navigate nodes |
 
-**Repository**: https://github.com/davidtphung/dotfiles (private)
+## Stack
 
-Connected via GitHub CLI + Grok.
-
-## Current branch
-
-`main`
-
-Initialized: June 2026 (via Grok CLI session)
+- Vite + React 19 + TypeScript
+- Tailwind CSS v4
+- SVG spatial layer (no heavy map library)
+- GitHub Pages deployment via Actions

@@ -1,131 +1,32 @@
-# Home directory Git repository (.git in ~)
-# This repo is intended for selective dotfiles / config tracking only.
-# Everything is ignored by default to prevent accidentally committing
-# large binaries, caches, photos, music, or other user data.
+# Dependencies
+node_modules/
 
-# Ignore everything
-*
+# Build
+dist/
+dist-ssr/
 
-# Explicitly track this file
-!.gitignore
+# Local env
+.env
+.env.*
+!.env.example
 
-# === Shell / Terminal configs ===
-!/.zshrc
-!/.zshrc.bak*
-!/.zprofile
-!/.profile
-!/.bashrc
-!/.bash_profile
+# Editor
+.vscode/*
+!.vscode/extensions.json
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
 
-# === Git ===
-!/.gitconfig
-!/.gitattributes
-!/.gitignore
+# OS
+.DS_Store
+Thumbs.db
 
-# === Common editor / dev tool configs (add more as needed) ===
-!/.editorconfig
-
-# === AI / Agent tool configs ===
-# Only track lightweight top-level config files (review for secrets before add -f).
-# Full tool directories (plugins, caches, large workspaces) are intentionally ignored.
-!/.claude.json
-!/.claude.json.backup
-
-# If you want to track specific files inside these dirs later:
-#   git add -f .cursor/some-specific-file.json
-#   (Avoid adding entire .cursor/, .grok/, .agents/, .claude/ dirs)
-
-# === SSH (NEVER track private keys) ===
-!/.ssh/config
-!/.ssh/known_hosts
-!/.ssh/authorized_keys
-/.ssh/id_*
-/.ssh/*_key
-/.ssh/*.pem
-
-# === Other dev tool configs (selective) ===
-!/.config
-# Ignore most things inside .config unless explicitly allowed later
-.config/**
-
-# === Never track these top-level user dirs (data, apps, large media) ===
-/Applications
-/CascadeProjects
-/Desktop
-/Documents
-/Downloads
-/Library
-/Movies
-/Music
-/Orion
-/Pictures
-/Projects
-/Public
-/Trash
-/construction-terminal
-
-# === Caches, temps, histories, build artifacts ===
-/.cache
-/.local
-/.npm
-/.ollama
-/.hermes
-/.keras
-/.matplotlib
-/.mcp-auth
-/.serena
-/.windsurf
-/.zero
-/.codeium
-/.codex
-/.cups
-
-/.Trash
-/.DS_Store
-/.CFUserTextEncoding
-/.zcompdump*
-/.zsh_history
-/.zsh_sessions
-*.swp
-*.swo
-*~
+# Logs
 *.log
-*.tmp
+npm-debug.log*
 
-# === Large media / binary files (common in home) ===
-*.m4a
-*.mp3
-*.wav
-*.mov
-*.mp4
-*.avi
-*.jpg
-*.jpeg
-*.png
-*.gif
-*.heic
-*.pdf
-*.zip
-*.tar
-*.gz
-*.iso
-
-# === Backups and autosaves ===
-*.bak
-*.backup
-*.old
-*.orig
-.claude.json.backup
-
-# === Misc macOS / system ===
-*.icloud
-Icon?
-.Spotlight-V100
-.Trashes
-.fseventsd
-.documentRevisions-V100
-
-# Note: To track additional files, use:
-#   git add -f <path>
-# Review with `git status` before committing.
-# Consider using a dedicated dotfiles management setup (e.g. bare repo or chezmoi) for production use.
+# TypeScript
+*.tsbuildinfo
