@@ -14,22 +14,31 @@ node scripts/generate-research-json.mjs
 
 ## Schema
 
-Normalized commitment records live in `src/types/commitments.ts`:
+**Trackable commitment model** (`src/types/trackableCommitment.ts`):
 
-- `CommitmentRecord` with company, source provenance, era, category, value/unit, geography, confidence
-- `ForecastScenario`, `ComparisonMetric`, `CapexDataPoint` for analytics views
+- Full fields: term dates, utilization, remaining value, service/product scope, status, forecast signals
+- `commitmentFamily`: MACC, Azure Savings Plans, AWS SP/RI/EDP, GCP CUD, nuclear PPA, etc.
+- `domain`: cloud_spend | energy | policy | infrastructure
+
+Unified dataset: `ALL_COMMITMENTS` in `src/data/unifiedRegistry.ts` merges chronology + `cloudSpendCommitments.ts`.
+
+Legacy `CommitmentRecord` remains for backward compatibility via `legacyToTrackable()`.
 
 ## Pages
 
 | Route | Purpose |
 |-------|---------|
-| `/dashboard` | KPI cards, era breakdown, capex chart |
-| `/timeline` | Filterable scroll timeline + source drawer |
-| `/map` | Spatial infrastructure explorer (existing atlas) |
+| `/dashboard` | KPI cards, era breakdown, utilization, capex chart |
+| `/cloud` | MACC, Azure/AWS savings plans, utilization table |
+| `/timeline` | Unified cloud + energy timeline + evidence drawer |
+| `/review` | Analyst audit table with review mode columns |
+| `/map` | Spatial infrastructure explorer |
 | `/compare` | Era-tabbed company metrics + capex bars |
-| `/forecasts` | Scenario toggles (conservative, base, aggressive, grid constrained) |
+| `/forecasts` | Scenario toggles |
 | `/sources` | Categorized bibliography |
 | `/about` | Methodology |
+
+See `ASSUMPTIONS.md` for data limitations.
 
 ## Adding sources
 

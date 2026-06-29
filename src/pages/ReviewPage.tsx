@@ -4,23 +4,38 @@ import { useTrackableFilters } from '../hooks/useTrackableFilters'
 import { useIsMobile } from '../hooks/useMediaQuery'
 import { ExplorerLayout } from '../components/layout/ExplorerLayout'
 import { TrackableFilterBar } from '../components/explorer/TrackableFilterBar'
-import { TrackableTimeline } from '../components/explorer/TrackableTimeline'
+import { CommitmentTable } from '../components/explorer/CommitmentTable'
 import { TrackableDrawer } from '../components/explorer/TrackableDrawer'
 import { ExportMenu } from '../components/explorer/ExportMenu'
 import type { TrackableCommitment } from '../types/trackableCommitment'
 
-export function TimelinePage() {
+export function ReviewPage() {
   const isMobile = useIsMobile()
   const [selected, setSelected] = useState<TrackableCommitment | null>(null)
   const filters = useTrackableFilters(ALL_COMMITMENTS)
 
+  const directCount = filters.filtered.filter((r) => r.confidenceLevel === 'direct').length
+  const estimatedCount = filters.filtered.filter((r) => r.confidenceLevel === 'estimated').length
+
   return (
     <ExplorerLayout
-      route="timeline"
-      title="Timeline"
-      lede="Cloud spend, energy procurement, capex, and policy commitments on one source-backed timeline. Cloud and energy share the same axis."
+      route="review"
+      title="Audit and review"
+      lede="Analyst mode for source-backed data review. Every row shows provenance, term, utilization, and confidence. Export filtered results as CSV or JSON."
       actions={<ExportMenu records={filters.filtered} />}
     >
+      <div className="mb-6 flex flex-wrap gap-4 rounded-xl border border-[var(--border)] bg-white/3 px-4 py-3 text-sm">
+        <span className="text-[var(--text-secondary)]">
+          <span className="font-mono font-semibold text-emerald-300">{directCount}</span> direct
+        </span>
+        <span className="text-[var(--text-secondary)]">
+          <span className="font-mono font-semibold text-amber-300">{estimatedCount}</span> estimated
+        </span>
+        <span className="text-[var(--text-tertiary)]">
+          Cloud and energy commitments share one auditable timeline.
+        </span>
+      </div>
+
       <TrackableFilterBar
         query={filters.query}
         onQueryChange={filters.setQuery}
@@ -37,32 +52,16 @@ export function TimelinePage() {
         onReset={filters.reset}
         hasActiveFilters={filters.hasActiveFilters}
         resultCount={filters.filtered.length}
+        reviewMode={filters.reviewMode}
+        onReviewModeChange={filters.setReviewMode}
       />
 
-      <div className="mt-4 flex gap-2">
-        {(['compact', 'detailed'] as const).map((d) => (
-          <button
-            key={d}
-            type="button"
-            onClick={() => filters.setDensity(d)}
-            aria-pressed={filters.density === d}
-            className={`min-h-[36px] rounded-lg border px-3 text-xs font-medium focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)] ${
-              filters.density === d
-                ? 'border-[var(--accent)]/40 bg-[var(--accent)]/15 text-[var(--accent)]'
-                : 'border-[var(--border)] text-[var(--text-secondary)]'
-            }`}
-          >
-            {d === 'compact' ? 'Compact' : 'Detailed'}
-          </button>
-        ))}
-      </div>
-
-      <div className="mt-8">
-        <TrackableTimeline
+      <div className="mt-6">
+        <CommitmentTable
           records={filters.filtered}
-          density={filters.density}
           onSelect={setSelected}
           selectedId={selected?.id}
+          reviewMode={filters.reviewMode}
         />
       </div>
 

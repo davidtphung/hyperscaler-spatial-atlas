@@ -1,6 +1,8 @@
 export type AppRoute =
   | 'dashboard'
   | 'timeline'
+  | 'cloud'
+  | 'review'
   | 'map'
   | 'compare'
   | 'forecasts'
@@ -11,6 +13,8 @@ export function parseAppRoute(hash: string): AppRoute {
   const path = hash.replace(/^#/, '').replace(/^\//, '')
   if (path === '' || path === 'dashboard') return 'dashboard'
   if (path === 'timeline') return 'timeline'
+  if (path === 'cloud') return 'cloud'
+  if (path === 'review') return 'review'
   if (path === 'map') return 'map'
   if (path === 'compare') return 'compare'
   if (path === 'forecasts') return 'forecasts'

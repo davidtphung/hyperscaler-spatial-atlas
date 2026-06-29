@@ -1,9 +1,9 @@
 import { useState } from 'react'
-import type { CommitmentRecord } from '../../types/commitments'
-import { exportRecordsCsv, exportRecordsJson, shareExplorerUrl } from '../../utils/exportData'
+import type { TrackableCommitment } from '../../types/trackableCommitment'
+import { exportTrackableCsv, exportTrackableJson, shareExplorerUrl } from '../../utils/exportData'
 
 interface ExportMenuProps {
-  records: CommitmentRecord[]
+  records: TrackableCommitment[]
 }
 
 export function ExportMenu({ records }: ExportMenuProps) {
@@ -17,17 +17,17 @@ export function ExportMenu({ records }: ExportMenuProps) {
   }
 
   return (
-    <div className="flex flex-wrap gap-2" role="group" aria-label="Export and share">
+    <div className="flex flex-wrap gap-2" role="group" aria-label="Export and audit">
       <button
         type="button"
-        onClick={() => exportRecordsCsv(records)}
+        onClick={() => exportTrackableCsv(records)}
         className="min-h-[40px] rounded-xl border border-[var(--border)] px-3 text-xs font-medium text-[var(--text-secondary)] transition-colors hover:border-[var(--accent)]/40 hover:text-[var(--accent)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)]"
       >
         Export CSV
       </button>
       <button
         type="button"
-        onClick={() => exportRecordsJson(records)}
+        onClick={() => exportTrackableJson(records)}
         className="min-h-[40px] rounded-xl border border-[var(--border)] px-3 text-xs font-medium text-[var(--text-secondary)] transition-colors hover:border-[var(--accent)]/40 hover:text-[var(--accent)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)]"
       >
         Export JSON

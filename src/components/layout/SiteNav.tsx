@@ -4,12 +4,13 @@ import { routeHref } from '../../utils/routes'
 
 const LINKS: { route: AppRoute; label: string; short?: string }[] = [
   { route: 'dashboard', label: 'Overview', short: 'Home' },
+  { route: 'cloud', label: 'Cloud spend', short: 'Cloud' },
   { route: 'timeline', label: 'Timeline' },
   { route: 'map', label: 'Map' },
   { route: 'compare', label: 'Compare' },
+  { route: 'review', label: 'Audit', short: 'Audit' },
   { route: 'forecasts', label: 'Forecasts' },
   { route: 'sources', label: 'Sources', short: 'Data' },
-  { route: 'about', label: 'About' },
 ]
 
 interface SiteNavProps {
@@ -18,15 +19,14 @@ interface SiteNavProps {
 }
 
 export function SiteNav({ current, compact }: SiteNavProps) {
+  const links = compact ? LINKS.filter((l) => ['dashboard', 'cloud', 'timeline', 'map', 'review'].includes(l.route)) : LINKS
+
   return (
     <nav
       aria-label="Site"
-      className={clsx(
-        'flex items-center gap-0.5 overflow-x-auto',
-        compact ? 'text-xs' : 'text-sm'
-      )}
+      className={clsx('flex items-center gap-0.5 overflow-x-auto', compact ? 'text-xs' : 'text-sm')}
     >
-      {LINKS.map((link) => {
+      {links.map((link) => {
         const active = current === link.route
         return (
           <a

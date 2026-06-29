@@ -1,4 +1,5 @@
 import type { CommitmentRecord } from '../types/commitments'
+import type { TrackableCommitment } from '../types/trackableCommitment'
 
 function escapeCsv(value: string): string {
   if (value.includes(',') || value.includes('"') || value.includes('\n')) {
@@ -7,32 +8,49 @@ function escapeCsv(value: string): string {
   return value
 }
 
-const CSV_COLUMNS: (keyof CommitmentRecord)[] = [
+const TRACKABLE_COLUMNS: (keyof TrackableCommitment)[] = [
   'id',
   'company',
-  'parentCompany',
-  'date',
-  'era',
+  'hyperscaler',
+  'commitmentFamily',
+  'commitmentName',
+  'commitmentType',
+  'domain',
+  'announcementDate',
+  'startDate',
+  'endDate',
+  'termLength',
+  'committedValue',
+  'committedValueMax',
+  'committedUnit',
+  'actualValue',
+  'actualUnit',
+  'utilizationPct',
+  'remainingValue',
+  'geography',
+  'serviceScope',
+  'productScope',
   'category',
   'subcategory',
-  'commitmentType',
-  'value',
-  'valueMax',
-  'unit',
-  'geography',
-  'facilityOrProject',
+  'era',
+  'status',
   'confidenceLevel',
   'sourceTitle',
   'sourceUrl',
   'sourceType',
   'notes',
-  'quoteOrExcerpt',
+  'sourceExcerpt',
+  'forecastSignal',
 ]
 
-export function recordsToCsv(records: CommitmentRecord[]): string {
-  const header = CSV_COLUMNS.join(',')
+export function trackableToCsv(records: TrackableCommitment[]): string {
+  const header = TRACKABLE_COLUMNS.join(',')
   const rows = records.map((r) =>
-    CSV_COLUMNS.map((col) => escapeCsv(String(r[col] ?? ''))).join(',')
+    TRACKABLE_COLUMNS.map((col) => {
+      const val = r[col]
+      if (Array.isArray(val)) return escapeCsv(val.join(';'))
+      return escapeCsv(String(val ?? ''))
+    }).join(',')
   )
   return [header, ...rows].join('\n')
 }
@@ -47,12 +65,22 @@ export function downloadFile(content: string, filename: string, mime: string) {
   URL.revokeObjectURL(url)
 }
 
-export function exportRecordsCsv(records: CommitmentRecord[], filename = 'hyperscaler-commitments.csv') {
-  downloadFile(recordsToCsv(records), filename, 'text/csv;charset=utf-8')
+export function exportTrackableCsv(records: TrackableCommitment[], filename = 'hyperscaler-commitments.csv') {
+  downloadFile(trackableToCsv(records), filename, 'text/csv;charset=utf-8')
 }
 
-export function exportRecordsJson(records: CommitmentRecord[], filename = 'hyperscaler-commitments.json') {
+export function exportTrackableJson(records: TrackableCommitment[], filename = 'hyperscaler-commitments.json') {
   downloadFile(JSON.stringify(records, null, 2), filename, 'application/json')
+}
+
+/** @deprecated use exportTrackableCsv */
+export function exportRecordsCsv(records: CommitmentRecord[] | TrackableCommitment[], filename?: string) {
+  exportTrackableCsv(records as TrackableCommitment[], filename)
+}
+
+/** @deprecated use exportTrackableJson */
+export function exportRecordsJson(records: CommitmentRecord[] | TrackableCommitment[], filename?: string) {
+  exportTrackableJson(records as TrackableCommitment[], filename)
 }
 
 export function shareExplorerUrl(filters?: { company?: string; era?: string }) {
