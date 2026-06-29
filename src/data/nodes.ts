@@ -10,6 +10,8 @@ export const SPATIAL_NODES: SpatialNode[] = [
     status: 'operational',
     lat: 38.9,
     lng: -77.5,
+    location: { city: 'Ashburn', stateOrRegion: 'Virginia', country: 'United States', campus: 'Data Center Alley' },
+    infrastructure: { powerMW: 1200, landAcres: 850, gpuCount: 45000, buildings: 42 },
     summary:
       'Primary hyperscale compute corridor serving eastern North America with multi-AZ redundancy and sub-2ms intra-region mesh.',
     capacity: '4.2 GW equivalent',
@@ -28,6 +30,8 @@ export const SPATIAL_NODES: SpatialNode[] = [
     status: 'expanding',
     lat: 45.8,
     lng: -119.7,
+    location: { city: 'Boardman', stateOrRegion: 'Oregon', country: 'United States', campus: 'Columbia River Campus' },
+    infrastructure: { powerMW: 380, landAcres: 1400, gpuCount: 8000, buildings: 18 },
     summary:
       'Renewable-powered storage backbone with hydro-backed PUE of 1.15 and expanding S3/Glacier capacity.',
     capacity: '890 PB active',
@@ -46,6 +50,8 @@ export const SPATIAL_NODES: SpatialNode[] = [
     status: 'operational',
     lat: 53.3,
     lng: -6.3,
+    location: { city: 'Dublin', country: 'Ireland', campus: 'Grange Castle / Clonshaugh' },
+    infrastructure: { powerMW: 220, landAcres: 180, gpuCount: 12000, buildings: 14 },
     summary:
       'Transatlantic network gateway with 14 Tbps backbone capacity and GDPR-compliant data residency.',
     capacity: '14 Tbps transit',
@@ -64,6 +70,8 @@ export const SPATIAL_NODES: SpatialNode[] = [
     status: 'operational',
     lat: 50.1,
     lng: 8.7,
+    location: { city: 'Frankfurt', stateOrRegion: 'Hesse', country: 'Germany', campus: 'FRA Campus' },
+    infrastructure: { powerMW: 480, landAcres: 320, gpuCount: 28000, buildings: 22 },
     summary:
       'Central European compute hub with sovereign cloud options and direct fiber to financial districts.',
     capacity: '2.8 GW equivalent',
@@ -82,6 +90,8 @@ export const SPATIAL_NODES: SpatialNode[] = [
     status: 'expanding',
     lat: 35.7,
     lng: 139.7,
+    location: { city: 'Tokyo', country: 'Japan', campus: 'Inzai / Otemachi Edge' },
+    infrastructure: { powerMW: 350, landAcres: 95, gpuCount: 52000, buildings: 16 },
     summary:
       'Asia-Pacific AI training zone with H100 clusters and earthquake-resilient facility design.',
     capacity: '42k GPU-hours/day',
@@ -100,6 +110,8 @@ export const SPATIAL_NODES: SpatialNode[] = [
     status: 'operational',
     lat: 1.3,
     lng: 103.8,
+    location: { city: 'Singapore', country: 'Singapore', campus: 'Jurong / Tuas' },
+    infrastructure: { powerMW: 280, landAcres: 120, gpuCount: 18000, buildings: 12 },
     summary:
       'Southeast Asia launch region with submarine cable landing and sovereign data controls.',
     capacity: '1.6 GW equivalent',
@@ -118,6 +130,8 @@ export const SPATIAL_NODES: SpatialNode[] = [
     status: 'operational',
     lat: 41.6,
     lng: -93.6,
+    location: { city: 'West Des Moines', stateOrRegion: 'Iowa', country: 'United States', campus: 'Project Alluvion' },
+    infrastructure: { powerMW: 410, landAcres: 890, gpuCount: 15000, buildings: 20 },
     summary:
       'Midwest compute fabric with wind-backed power purchase agreements and low-latency central US reach.',
     capacity: '2.1 GW equivalent',
@@ -136,6 +150,8 @@ export const SPATIAL_NODES: SpatialNode[] = [
     status: 'operational',
     lat: 51.5,
     lng: -0.1,
+    location: { city: 'London', country: 'United Kingdom', campus: 'Docklands / Slough' },
+    infrastructure: { powerMW: 180, landAcres: 65, gpuCount: 6000, buildings: 9 },
     summary:
       'Financial services network hub with cross-connect to LINX and sub-3ms latency to City of London.',
     capacity: '8.4 Tbps transit',
@@ -154,6 +170,8 @@ export const SPATIAL_NODES: SpatialNode[] = [
     status: 'expanding',
     lat: 41.2,
     lng: -95.9,
+    location: { city: 'Council Bluffs', stateOrRegion: 'Iowa', country: 'United States', campus: 'Papillion / Omaha Metro' },
+    infrastructure: { powerMW: 520, landAcres: 1100, gpuCount: 85000, buildings: 24 },
     summary:
       'Tensor Processing Unit and T4/V100 legacy clusters with expanding Gemini inference capacity.',
     capacity: '28k TPU chip-hours/day',
@@ -172,6 +190,8 @@ export const SPATIAL_NODES: SpatialNode[] = [
     status: 'operational',
     lat: 36.2,
     lng: -115.1,
+    location: { city: 'Las Vegas', stateOrRegion: 'Nevada', country: 'United States', campus: 'Enterprise AI Campus' },
+    infrastructure: { powerMW: 680, landAcres: 240, gpuCount: 128000, buildings: 8 },
     summary:
       'Dedicated GPU cloud with liquid-cooled H100/H200 racks and 400 Gbps intra-rack fabric.',
     capacity: '64k GPU-hours/day',
@@ -190,6 +210,8 @@ export const SPATIAL_NODES: SpatialNode[] = [
     status: 'operational',
     lat: -23.5,
     lng: -46.6,
+    location: { city: 'São Paulo', stateOrRegion: 'São Paulo', country: 'Brazil', campus: 'SP Metro Campus' },
+    infrastructure: { powerMW: 140, landAcres: 110, gpuCount: 4000, buildings: 7 },
     summary:
       'Latin America anchor region with Portuguese/Spanish localization and Itaipu hydro proximity.',
     capacity: '980 MW equivalent',
@@ -208,6 +230,8 @@ export const SPATIAL_NODES: SpatialNode[] = [
     status: 'expanding',
     lat: 19.1,
     lng: 72.9,
+    location: { city: 'Mumbai', stateOrRegion: 'Maharashtra', country: 'India', campus: 'Navi Mumbai Edge' },
+    infrastructure: { powerMW: 45, landAcres: 28, gpuCount: 2000, buildings: 4 },
     summary:
       'South Asia edge expansion with 5G MEC partnerships and sub-10ms metro coverage.',
     capacity: '420 edge PoPs',
@@ -226,6 +250,8 @@ export const SPATIAL_NODES: SpatialNode[] = [
     status: 'operational',
     lat: 26.0,
     lng: 50.6,
+    location: { city: 'Manama', country: 'Bahrain', campus: 'Askar / Hidd Gateway' },
+    infrastructure: { powerMW: 90, landAcres: 55, gpuCount: 1500, buildings: 5 },
     summary:
       'Middle East network gateway linking Europe, Africa, and Asia with submarine cable diversity.',
     capacity: '3.2 Tbps transit',
@@ -244,6 +270,8 @@ export const SPATIAL_NODES: SpatialNode[] = [
     status: 'planned',
     lat: -33.9,
     lng: 18.4,
+    location: { city: 'Cape Town', stateOrRegion: 'Western Cape', country: 'South Africa', campus: 'Atlantis Solar Park (planned)' },
+    infrastructure: { powerMW: 200, landAcres: 400, gpuCount: 8000, buildings: 6 },
     summary:
       'Planned African storage region with solar-backed design and cross-continental replication.',
     capacity: 'Planned 200 PB',
@@ -262,6 +290,8 @@ export const SPATIAL_NODES: SpatialNode[] = [
     status: 'operational',
     lat: 59.3,
     lng: 18.1,
+    location: { city: 'Stockholm', country: 'Sweden', campus: 'Kista / Västerås' },
+    infrastructure: { powerMW: 160, landAcres: 220, gpuCount: 3000, buildings: 10 },
     summary:
       'Nordic cold-climate storage with free-air cooling and 100% renewable energy certificate.',
     capacity: '1.2 EB archival',
@@ -280,6 +310,8 @@ export const SPATIAL_NODES: SpatialNode[] = [
     status: 'operational',
     lat: 38.95,
     lng: -77.45,
+    location: { city: 'Dulles', stateOrRegion: 'Virginia', country: 'United States', campus: 'IAD Edge POP' },
+    infrastructure: { powerMW: 25, landAcres: 12, gpuCount: 0, buildings: 2 },
     summary:
       'Social graph edge cache with real-time content delivery and 200 Gbps peering capacity.',
     capacity: '1.8 Tbps CDN',
@@ -298,6 +330,8 @@ export const SPATIAL_NODES: SpatialNode[] = [
     status: 'maintenance',
     lat: 33.4,
     lng: -112.1,
+    location: { city: 'Phoenix', stateOrRegion: 'Arizona', country: 'United States', campus: 'Red Rock / Mesa' },
+    infrastructure: { powerMW: 290, landAcres: 340, gpuCount: 22000, buildings: 11 },
     summary:
       'Enterprise database cloud with scheduled fabric upgrade; read replicas remain available.',
     capacity: '1.4 GW equivalent',
@@ -316,6 +350,8 @@ export const SPATIAL_NODES: SpatialNode[] = [
     status: 'operational',
     lat: 65.6,
     lng: 22.2,
+    location: { city: 'Luleå', country: 'Sweden', campus: 'Arctic Circle Data Hall' },
+    infrastructure: { powerMW: 310, landAcres: 680, gpuCount: 35000, buildings: 6 },
     summary:
       'Arctic-circle data hall with natural cooling and AI training cold-storage tier.',
     capacity: '640 PB active',
@@ -334,6 +370,8 @@ export const SPATIAL_NODES: SpatialNode[] = [
     status: 'operational',
     lat: 37.5,
     lng: 127.0,
+    location: { city: 'Seoul', country: 'South Korea', campus: 'Gangnam Edge Cluster' },
+    infrastructure: { powerMW: 38, landAcres: 22, gpuCount: 4500, buildings: 3 },
     summary:
       'Ultra-low-latency edge for gaming and fintech with 5G core integration.',
     capacity: '280 edge PoPs',
@@ -352,6 +390,8 @@ export const SPATIAL_NODES: SpatialNode[] = [
     status: 'operational',
     lat: 39.96,
     lng: -83.0,
+    location: { city: 'Columbus', stateOrRegion: 'Ohio', country: 'United States', campus: 'New Albany Campus' },
+    infrastructure: { powerMW: 380, landAcres: 520, gpuCount: 20000, buildings: 15 },
     summary:
       'Secondary eastern compute zone with disaster recovery pairing to us-east-1.',
     capacity: '1.8 GW equivalent',

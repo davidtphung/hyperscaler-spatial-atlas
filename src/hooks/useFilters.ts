@@ -19,10 +19,13 @@ export function useFilters(nodes: SpatialNode[]) {
       if (!providers.has(node.provider)) return false
       if (!statuses.has(node.status)) return false
       if (!q) return true
+      const loc = node.location
+      const locStr = [loc.campus, loc.city, loc.stateOrRegion, loc.country].filter(Boolean).join(' ')
       return (
         node.name.toLowerCase().includes(q) ||
         node.region.toLowerCase().includes(q) ||
         node.provider.toLowerCase().includes(q) ||
+        locStr.toLowerCase().includes(q) ||
         node.tags.some((t) => t.toLowerCase().includes(q))
       )
     })

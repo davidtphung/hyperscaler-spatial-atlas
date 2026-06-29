@@ -286,7 +286,7 @@ function App() {
             relatedNodes={relatedNodes}
             onClose={handleClose}
             onSelectRelated={handleSelect}
-            className="w-full max-w-md shrink-0"
+            className="w-full max-w-lg shrink-0"
           />
         )}
       </div>

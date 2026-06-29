@@ -2,6 +2,24 @@ export type NodeCategory = 'compute' | 'storage' | 'network' | 'ai' | 'edge'
 
 export type NodeStatus = 'operational' | 'expanding' | 'planned' | 'maintenance'
 
+export interface NodeLocation {
+  city: string
+  stateOrRegion?: string
+  country: string
+  campus: string
+}
+
+export interface NodeInfrastructure {
+  /** Peak IT load in megawatts */
+  powerMW: number
+  /** Total campus land footprint in acres */
+  landAcres: number
+  /** Active GPU / accelerator count */
+  gpuCount: number
+  /** Building count on campus */
+  buildings: number
+}
+
 export interface SpatialNode {
   id: string
   name: string
@@ -11,6 +29,8 @@ export interface SpatialNode {
   status: NodeStatus
   lat: number
   lng: number
+  location: NodeLocation
+  infrastructure: NodeInfrastructure
   summary: string
   capacity: string
   latency: string

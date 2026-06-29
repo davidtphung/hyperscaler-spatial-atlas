@@ -5,6 +5,9 @@ import type { SpatialNode } from '../../types'
 import { Badge } from '../ui/Badge'
 import { CloseIcon, ArrowIcon, ShareIcon } from '../icons'
 import { IconButton } from '../ui/IconButton'
+import { InfrastructureCharts } from './InfrastructureCharts'
+import { FleetComparisonChart } from './FleetComparisonChart'
+import { formatCoordinates, formatLocationAddress } from '../../utils/metrics'
 
 interface DetailPanelProps {
   node: SpatialNode | null
@@ -46,7 +49,7 @@ export function DetailPanel({
         </div>
         <h2 className="text-lg font-semibold text-[var(--text-primary)]">Select a region</h2>
         <p className="mt-2 max-w-xs text-sm text-[var(--text-secondary)]">
-          Click or tap a node on the map, use Tab to navigate nodes, or search to jump directly.
+          Click or tap a node on the map to view power, land, GPU counts, and location data.
         </p>
       </aside>
     )
@@ -70,13 +73,12 @@ export function DetailPanel({
       tabIndex={-1}
       className={clsx(
         'flex flex-col overflow-hidden border-[var(--border)] bg-[var(--surface)]/85 backdrop-blur-xl',
-        isMobile ? 'max-h-[70vh] rounded-t-3xl' : 'border-l',
+        isMobile ? 'max-h-[80vh] rounded-t-3xl' : 'border-l',
         className
       )}
       aria-label={`Details for ${node.name}`}
       role="complementary"
     >
-      {/* Mobile drag handle */}
       {isMobile && (
         <div className="flex justify-center pt-3 pb-1" aria-hidden>
           <div className="h-1 w-10 rounded-full bg-[var(--border)]" />
@@ -103,7 +105,44 @@ export function DetailPanel({
       </header>
 
       <div className="flex-1 overflow-y-auto px-5 py-4">
-        <p className="text-base leading-relaxed text-[var(--text-secondary)]">{node.summary}</p>
+        {/* Location block */}
+        <section aria-labelledby="location-heading">
+          <h3
+            id="location-heading"
+            className="text-[10px] font-semibold uppercase tracking-widest text-[var(--text-tertiary)]"
+          >
+            Location
+          </h3>
+          <dl className="mt-2 space-y-2 rounded-xl border border-[var(--border)] bg-white/3 p-3">
+            <div>
+              <dt className="text-[9px] font-semibold uppercase tracking-wider text-[var(--text-tertiary)]">Campus</dt>
+              <dd className="mt-0.5 text-sm font-medium text-[var(--text-primary)]">{node.location.campus}</dd>
+            </div>
+            <div>
+              <dt className="text-[9px] font-semibold uppercase tracking-wider text-[var(--text-tertiary)]">Address</dt>
+              <dd className="mt-0.5 text-sm text-[var(--text-secondary)]">{formatLocationAddress(node.location)}</dd>
+            </div>
+            <div className="grid grid-cols-2 gap-3">
+              <div>
+                <dt className="text-[9px] font-semibold uppercase tracking-wider text-[var(--text-tertiary)]">Coordinates</dt>
+                <dd className="mt-0.5 font-mono text-xs text-[var(--text-primary)]">
+                  {formatCoordinates(node.lat, node.lng)}
+                </dd>
+              </div>
+              <div>
+                <dt className="text-[9px] font-semibold uppercase tracking-wider text-[var(--text-tertiary)]">Land</dt>
+                <dd className="mt-0.5 font-mono text-xs text-[var(--text-primary)]">
+                  {node.infrastructure.landAcres.toLocaleString()} acres
+                </dd>
+              </div>
+            </div>
+          </dl>
+        </section>
+
+        <InfrastructureCharts node={node} />
+        <FleetComparisonChart node={node} />
+
+        <p className="mt-6 text-base leading-relaxed text-[var(--text-secondary)]">{node.summary}</p>
 
         <dl className="mt-6 grid grid-cols-2 gap-4">
           {[
